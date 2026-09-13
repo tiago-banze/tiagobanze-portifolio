@@ -1,0 +1,652 @@
+[
+{
+  "model": "api.service",
+  "pk": 1,
+  "fields": {
+    "created_at": "2026-09-11T20:40:01.444Z",
+    "updated_at": "2026-09-11T20:40:01.444Z",
+    "title": "Desenvolvimento de Software e Web",
+    "slug": "desenvolvimento-de-software-e-web",
+    "short_description": "Sites, sistemas web, APIs e automações sob medida.",
+    "description": "Concepção e desenvolvimento de sites institucionais, sistemas web completos, APIs REST e automações personalizadas — utilizando tecnologias modernas como Python/Django, React e Next.js, com foco em performance, segurança e escalabilidade.",
+    "icon": "code",
+    "order": 1,
+    "is_active": true
+  }
+},
+{
+  "model": "api.service",
+  "pk": 2,
+  "fields": {
+    "created_at": "2026-09-11T20:40:01.454Z",
+    "updated_at": "2026-09-11T20:40:01.454Z",
+    "title": "Projetos Académicos & Consultoria",
+    "slug": "projetos-academicos-consultoria",
+    "short_description": "Assessoria técnica no desenvolvimento de monografias e projetos de pesquisa.",
+    "description": "Apoio técnico especializado a estudantes universitários na conceção, implementação e documentação de projetos de graduação (monografias) e pesquisas tecnológicas, desde a definição do problema até à defesa final.",
+    "icon": "graduation-cap",
+    "order": 2,
+    "is_active": true
+  }
+},
+{
+  "model": "api.service",
+  "pk": 3,
+  "fields": {
+    "created_at": "2026-09-11T20:40:01.466Z",
+    "updated_at": "2026-09-11T20:40:01.466Z",
+    "title": "Assistência e Treinamento de Software",
+    "slug": "assistencia-e-treinamento-de-software",
+    "short_description": "Aulas práticas de Word, Excel, PowerPoint e sistemas académicos.",
+    "description": "Treinamento prático e individualizado em Microsoft Office (Word, Excel, PowerPoint) e capacitação no manuseio de sistemas académicos e administrativos, adaptado ao ritmo e necessidade de cada cliente.",
+    "icon": "monitor",
+    "order": 3,
+    "is_active": true
+  }
+},
+{
+  "model": "api.service",
+  "pk": 4,
+  "fields": {
+    "created_at": "2026-09-11T20:40:01.476Z",
+    "updated_at": "2026-09-13T13:36:01.244Z",
+    "title": "Manutenção e Reparação de Computadores",
+    "slug": "manutencao-e-reparacao-de-computadores",
+    "short_description": "Assistência técnica completa a nível de hardware e software.",
+    "description": "Instalação de sistemas operativos e drivers, limpeza física e lógica, diagnóstico e reparação de avarias de hardware e software, e manutenção preventiva de computadores pessoais e empresariais.",
+    "icon": "cpu",
+    "order": 4,
+    "is_active": true
+  }
+},
+{
+  "model": "api.service",
+  "pk": 5,
+  "fields": {
+    "created_at": "2026-09-11T20:40:01.485Z",
+    "updated_at": "2026-09-11T20:40:01.486Z",
+    "title": "Instalações Eletrotécnicas Residenciais",
+    "slug": "instalacoes-eletrotecnicas-residenciais",
+    "short_description": "Projeto, montagem, manutenção e reparação de instalações elétricas.",
+    "description": "Projeto e montagem de instalações elétricas residenciais, manutenção preventiva e reparação de avarias elétricas, com foco em segurança e conformidade técnica.",
+    "icon": "zap",
+    "order": 5,
+    "is_active": true
+  }
+},
+{
+  "model": "api.service",
+  "pk": 6,
+  "fields": {
+    "created_at": "2026-09-11T20:40:01.496Z",
+    "updated_at": "2026-09-13T13:36:01.270Z",
+    "title": "Assistência Técnica Mobile",
+    "slug": "assistencia-tecnica-mobile",
+    "short_description": "Suporte técnico focado exclusivamente em software para smartphones.",
+    "description": "Suporte técnico exclusivamente a nível de software para smartphones: desbloqueio, configuração de sistemas, resolução de falhas de software e restauro de fábrica.",
+    "icon": "smartphone",
+    "order": 6,
+    "is_active": true
+  }
+},
+{
+  "model": "api.service",
+  "pk": 7,
+  "fields": {
+    "created_at": "2026-09-12T22:43:25.601Z",
+    "updated_at": "2026-09-13T13:36:01.192Z",
+    "title": "Desenvolvimento de Software",
+    "slug": "desenvolvimento-de-software",
+    "short_description": "Criação de sistemas web, automações e APIs.",
+    "description": "Concepção e desenvolvimento de sistemas web completos, APIs REST e automações personalizadas — utilizando tecnologias como Python/Django, React e Next.js, com foco em performance, segurança e escalabilidade.",
+    "icon": "code",
+    "order": 1,
+    "is_active": true
+  }
+},
+{
+  "model": "api.service",
+  "pk": 8,
+  "fields": {
+    "created_at": "2026-09-12T22:43:25.617Z",
+    "updated_at": "2026-09-13T13:36:01.216Z",
+    "title": "Assessoria e Consultoria Académica",
+    "slug": "assessoria-e-consultoria-academica",
+    "short_description": "Apoio técnico e orientação para estudantes em projetos tecnológicos.",
+    "description": "Orientação técnica a estudantes universitários no desenvolvimento de projetos de graduação e pesquisas tecnológicas — apoiando na definição do problema, arquitetura e documentação, sem fazer o projeto pelo aluno, mas orientando-o a chegar lá.",
+    "icon": "graduation-cap",
+    "order": 2,
+    "is_active": true
+  }
+},
+{
+  "model": "api.service",
+  "pk": 9,
+  "fields": {
+    "created_at": "2026-09-12T22:43:25.628Z",
+    "updated_at": "2026-09-13T13:36:01.230Z",
+    "title": "Treinamento em Software de Escritório",
+    "slug": "treinamento-em-software-de-escritorio",
+    "short_description": "Aulas e suporte prático em Word, Excel, PowerPoint.",
+    "description": "Aulas e suporte prático em Pacote Microsoft Office (Word, Excel, PowerPoint) e apoio no uso de sistemas académicos e administrativos, adaptado ao ritmo de cada cliente.",
+    "icon": "monitor",
+    "order": 3,
+    "is_active": true
+  }
+},
+{
+  "model": "api.service",
+  "pk": 10,
+  "fields": {
+    "created_at": "2026-09-12T22:43:25.650Z",
+    "updated_at": "2026-09-13T13:36:01.256Z",
+    "title": "Instalações Elétricas Residenciais",
+    "slug": "instalacoes-eletricas-residenciais",
+    "short_description": "Montagem, manutenção e reparação de avarias elétricas residenciais.",
+    "description": "Montagem, manutenção e reparação de avarias elétricas residenciais — projeto e instalação focados no âmbito doméstico, não eletrotécnica industrial.",
+    "icon": "zap",
+    "order": 5,
+    "is_active": true
+  }
+},
+{
+  "model": "api.project",
+  "pk": 13,
+  "fields": {
+    "created_at": "2026-09-13T13:36:01.296Z",
+    "updated_at": "2026-09-13T16:02:32.499Z",
+    "title": "GateFlow",
+    "slug": "gateflow",
+    "summary": "Sistema completo de check-in e gestão de acesso para eventos.",
+    "problem": "Organizadores de eventos em Moçambique dependiam de listas em papel para o controlo de entrada, gerando filas longas e fraudes de bilhetes.",
+    "solution": "Sistema web com geração de bilhetes com QR Code, validação em tempo real e painel administrativo, construído em Flask/Jinja2 com base de dados PostgreSQL (Neon) e deploy na Vercel.",
+    "cover_image": "",
+    "repo_url": "https://gateflow-lyart.vercel.app/",
+    "live_url": "",
+    "status": "production",
+    "is_featured": true,
+    "order": 1
+  }
+},
+{
+  "model": "api.project",
+  "pk": 14,
+  "fields": {
+    "created_at": "2026-09-13T13:36:01.358Z",
+    "updated_at": "2026-09-13T16:03:37.690Z",
+    "title": "Portfólio Pessoal Dinâmico",
+    "slug": "portfolio-pessoal-dinamico",
+    "summary": "Esta plataforma web interativa, com Blog técnico e CV integrado.",
+    "problem": "Necessidade de uma presença profissional online, indexável pelo Google, com blog técnico e painel de administração de conteúdo próprio.",
+    "solution": "Front-end em Next.js (SSR/SSG) para SEO máximo, back-end em Django REST Framework com painel administrativo para gerir projetos, blog e serviços.",
+    "cover_image": "",
+    "repo_url": "https://github.com/tiago-banze",
+    "live_url": "",
+    "status": "completed",
+    "is_featured": true,
+    "order": 2
+  }
+},
+{
+  "model": "api.project",
+  "pk": 15,
+  "fields": {
+    "created_at": "2026-09-13T13:36:01.427Z",
+    "updated_at": "2026-09-13T13:36:01.427Z",
+    "title": "Plataforma de E-Commerce & Delivery Interativo",
+    "slug": "plataforma-de-e-commerce-delivery-interativo",
+    "summary": "O cliente pede um produto de qualquer loja local, e um estafeta compra e entrega em casa.",
+    "problem": "Compradores sem tempo ou meio de transporte não conseguem obter produtos de lojas locais que não fazem entregas próprias.",
+    "solution": "Plataforma onde o cliente descreve o produto e a loja pretendida (ex: uma botija de gás); um estafeta aceita o pedido, realiza a compra física e entrega na residência, com pagamento no ato da entrega. Em desenvolvimento.",
+    "cover_image": "",
+    "repo_url": "",
+    "live_url": "",
+    "status": "in_progress",
+    "is_featured": false,
+    "order": 3
+  }
+},
+{
+  "model": "api.project",
+  "pk": 16,
+  "fields": {
+    "created_at": "2026-09-13T13:36:01.487Z",
+    "updated_at": "2026-09-13T16:09:29.085Z",
+    "title": "Sistema de Gestão de Tarefas e Agendas",
+    "slug": "sistema-de-gestao-de-tarefas-e-agendas",
+    "summary": "Plataforma para organização pessoal, agendamento e gestão de rotinas.",
+    "problem": "Falta de uma ferramenta simples e local para organizar tarefas, compromissos e rotinas diárias.",
+    "solution": "Sistema web para criação de tarefas, agendamento de compromissos e acompanhamento de rotinas, com lembretes e categorização. Em desenvolvimento.",
+    "cover_image": "",
+    "repo_url": "",
+    "live_url": "",
+    "status": "completed",
+    "is_featured": false,
+    "order": 4
+  }
+},
+{
+  "model": "api.category",
+  "pk": 1,
+  "fields": {
+    "name": "Engenharia de Software",
+    "slug": "engenharia-de-software"
+  }
+},
+{
+  "model": "api.category",
+  "pk": 2,
+  "fields": {
+    "name": "Redes de Computadores",
+    "slug": "redes-de-computadores"
+  }
+},
+{
+  "model": "api.category",
+  "pk": 3,
+  "fields": {
+    "name": "Eletrónica & IoT",
+    "slug": "eletronica-iot"
+  }
+},
+{
+  "model": "api.category",
+  "pk": 4,
+  "fields": {
+    "name": "Tutoriais",
+    "slug": "tutoriais"
+  }
+},
+{
+  "model": "api.post",
+  "pk": 11,
+  "fields": {
+    "created_at": "2026-09-13T13:36:01.554Z",
+    "updated_at": "2026-09-13T13:36:01.554Z",
+    "title": "Como Configurar um Servidor Django do Zero para Produção",
+    "slug": "como-configurar-um-servidor-django-do-zero-para-producao",
+    "excerpt": "Guia completo: WSGI/ASGI, Gunicorn, Nginx, variáveis de ambiente e checklist de segurança.",
+    "content": "## Introdução\n\nColocar um projeto Django em produção envolve muito mais do que `runserver`. Este guia cobre o caminho completo: WSGI/ASGI, Gunicorn, Nginx como proxy reverso, variáveis de ambiente e um checklist de segurança.\n\n## 1. WSGI vs ASGI — qual usar?\n\n- **WSGI** (`core/wsgi.py`) é o padrão para aplicações Django tradicionais, síncronas. É o que o Gunicorn usa por omissão.\n- **ASGI** (`core/asgi.py`) é necessário se usar WebSockets, Django Channels ou código assíncrono (`async def` em views).\n\nSe o seu projeto só tem views REST normais, fique com WSGI — é mais simples e mais testado em produção.\n\n## 2. Variáveis de ambiente\n\nNunca deixe segredos no código. Use `python-decouple` ou `django-environ`:\n\n```python\n# settings.py\nfrom decouple import config\n\nSECRET_KEY = config('DJANGO_SECRET_KEY')\nDEBUG = config('DEBUG', default=False, cast=bool)\nALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=lambda v: [s.strip() for s in v.split(',')])\n```\n\nE no servidor, um ficheiro `.env` (nunca no Git):\n\n```\nDJANGO_SECRET_KEY=uma-chave-longa-e-aleatoria\nDEBUG=False\nALLOWED_HOSTS=meudominio.co.mz,www.meudominio.co.mz\n```\n\nGere uma `SECRET_KEY` segura com:\n\n```bash\npython -c \"from django.core.management.utils import get_random_secret_key; print(get_random_secret_key())\"\n```\n\n## 3. Gunicorn — o servidor de aplicação\n\nInstale e teste localmente:\n\n```bash\npip install gunicorn\ngunicorn core.wsgi:application --bind 0.0.0.0:8000 --workers 3\n```\n\nRegra prática para o número de *workers*: `(2 × núcleos de CPU) + 1`.\n\nPara produção, crie um serviço `systemd` (`/etc/systemd/system/gunicorn.service`):\n\n```ini\n[Unit]\nDescription=Gunicorn - Django\nAfter=network.target\n\n[Service]\nUser=www-data\nGroup=www-data\nWorkingDirectory=/var/www/meuprojeto/backend\nExecStart=/var/www/meuprojeto/backend/venv/bin/gunicorn \\\n          --workers 3 \\\n          --bind unix:/run/gunicorn.sock \\\n          core.wsgi:application\n\n[Install]\nWantedBy=multi-user.target\n```\n\nAtive com:\n\n```bash\nsudo systemctl enable --now gunicorn\n```\n\n## 4. Nginx como proxy reverso\n\n```nginx\nserver {\n    listen 80;\n    server_name meudominio.co.mz;\n\n    location /static/ {\n        alias /var/www/meuprojeto/backend/staticfiles/;\n    }\n\n    location /media/ {\n        alias /var/www/meuprojeto/backend/media/;\n    }\n\n    location / {\n        proxy_pass http://unix:/run/gunicorn.sock;\n        proxy_set_header Host $host;\n        proxy_set_header X-Real-IP $remote_addr;\n        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;\n        proxy_set_header X-Forwarded-Proto $scheme;\n    }\n}\n```\n\nDepois disso, use `certbot` para HTTPS gratuito (Let's Encrypt):\n\n```bash\nsudo certbot --nginx -d meudominio.co.mz\n```\n\n## 5. Checklist de segurança antes de ir ao ar\n\n```python\nDEBUG = False\nALLOWED_HOSTS = ['meudominio.co.mz']\nSECURE_SSL_REDIRECT = True\nSESSION_COOKIE_SECURE = True\nCSRF_COOKIE_SECURE = True\nSECURE_HSTS_SECONDS = 31536000\nSECURE_HSTS_INCLUDE_SUBDOMAINS = True\nX_FRAME_OPTIONS = 'DENY'\n```\n\nCorra também `python manage.py check --deploy` — o próprio Django avisa sobre configurações inseguras.\n\n## 6. Ficheiros estáticos\n\n```bash\npython manage.py collectstatic --noinput\n```\n\nCom o `whitenoise` configurado no `MIDDLEWARE`, o Gunicorn já consegue servir estáticos comprimidos sem depender do Nginx para isso, o que simplifica bastante o deploy inicial.\n\n## Conclusão\n\nCom Gunicorn + Nginx + variáveis de ambiente + o checklist de segurança do Django, tem uma base de produção robusta, replicável em qualquer VPS Linux.",
+    "cover_image": "",
+    "category": 1,
+    "status": "published",
+    "published_at": "2026-09-13T13:36:01.552Z",
+    "reading_time_minutes": 2,
+    "meta_title": "Como Configurar um Servidor Django do Zero para Produção",
+    "meta_description": "Guia completo: WSGI/ASGI, Gunicorn, Nginx, variáveis de ambiente e checklist de segurança."
+  }
+},
+{
+  "model": "api.post",
+  "pk": 12,
+  "fields": {
+    "created_at": "2026-09-13T13:36:01.618Z",
+    "updated_at": "2026-09-13T13:36:01.618Z",
+    "title": "Guia Prático de Fusão de Fibra Óptica",
+    "slug": "guia-pratico-de-fusao-de-fibra-optica",
+    "excerpt": "Preparação do cabo, clivagem, fusão por arco elétrico, atenuação e testes com OTDR.",
+    "content": "## Introdução\n\nA fusão de fibra óptica é o processo de unir duas fibras através de calor controlado (arco elétrico), garantindo baixíssima perda de sinal na emenda. Este guia cobre o processo de campo, do início ao teste final.\n\n## 1. Equipamento necessário\n\n- Fusionadora de fibra óptica (com alinhamento por núcleo, idealmente)\n- Decapador de fibra (para remover a capa e o revestimento)\n- Clivador de precisão\n- Álcool isopropílico + toalhetes sem fiapos\n- Mangas de proteção térmica (splice protection sleeves)\n- Bandeja/organizador de fusões\n- OTDR (Optical Time-Domain Reflectometer) para testes\n\n## 2. Preparação do cabo\n\n1. Remova a capa externa do cabo com cuidado, sem tocar nas fibras internas.\n2. Identifique e separe as fibras pela cor (padrão de cores TIA/EIA-598).\n3. Remova o revestimento (coating) de cada fibra com o decapador, deixando cerca de 30-40 mm de fibra nua.\n4. Limpe a fibra nua com álcool isopropílico e um toalhete sem fiapos — qualquer resíduo de gordura ou pó aumenta a perda na fusão.\n\n## 3. Clivagem (cleaving)\n\nA clivagem cria uma face perfeitamente plana e perpendicular na ponta da fibra — é o passo mais crítico:\n\n- Ajuste o clivador para o comprimento correto (normalmente 8-16 mm, conforme o modelo da fusionadora).\n- Um corte de má qualidade (ângulo inclinado, lascas) é a causa mais comum de fusões com alta perda.\n- Inspecione visualmente ou no microscópio da fusionadora antes de prosseguir.\n\n## 4. Fusão por arco elétrico\n\n1. Insira as duas pontas clivadas na fusionadora, uma de cada lado.\n2. A máquina alinha automaticamente os núcleos (ou revestimentos, em modelos mais simples).\n3. O arco elétrico funde as duas pontas, criando uma junção contínua.\n4. A fusionadora estima a perda da emenda (normalmente entre 0.01 e 0.05 dB numa fusão bem executada).\n\n## 5. Proteção da emenda\n\nDepois da fusão, desliza-se uma manga de proteção térmica sobre a junção e aquece-se num forno próprio da fusionadora (normalmente 30-90 segundos), que a retrai e protege mecanicamente a fibra fundida.\n\n## 6. Testes com OTDR\n\nO OTDR envia um pulso de luz pela fibra e mede a luz refletida, permitindo:\n\n- Localizar a distância exata de cada emenda e eventuais falhas\n- Medir a atenuação (perda de sinal) em cada ponto do trajeto\n- Confirmar que a perda total está dentro do orçamento óptico do projeto (tipicamente < 0.3 dB por emenda de fusão)\n\n## 7. Boas práticas de campo\n\n- Nunca olhe diretamente para a ponta de uma fibra ativa — o laser é invisível e pode causar danos oculares.\n- Mantenha a área de trabalho limpa; poeira é o maior inimigo da fusão de fibra.\n- Registe a atenuação de cada emenda num relatório — facilita diagnósticos futuros.\n- Proteja sempre as fusões dentro de uma caixa de emenda (splice closure) apropriada para ambiente externo ou interno.\n\n## Conclusão\n\nFusão de fibra óptica é uma competência que se aperfeiçoa com repetição — clivagem limpa e ambiente livre de poeira resolvem a grande maioria dos problemas de alta atenuação em campo.",
+    "cover_image": "",
+    "category": 2,
+    "status": "published",
+    "published_at": "2026-09-07T13:36:01.617Z",
+    "reading_time_minutes": 3,
+    "meta_title": "Guia Prático de Fusão de Fibra Óptica",
+    "meta_description": "Preparação do cabo, clivagem, fusão por arco elétrico, atenuação e testes com OTDR."
+  }
+},
+{
+  "model": "api.post",
+  "pk": 13,
+  "fields": {
+    "created_at": "2026-09-13T13:36:01.678Z",
+    "updated_at": "2026-09-13T13:36:01.678Z",
+    "title": "Introdução Prática a Sistemas Embarcados",
+    "slug": "introducao-pratica-a-sistemas-embarcados",
+    "excerpt": "Arquitetura de microcontroladores, portas GPIO, protocolos I2C/SPI/UART e um primeiro projeto em C.",
+    "content": "## Introdução\n\nSistemas embarcados combinam hardware e software dedicados a uma função específica. Este guia cobre a arquitetura básica de um microcontrolador, os protocolos de comunicação mais usados e um primeiro projeto em C.\n\n## 1. Arquitetura de um microcontrolador\n\nUm microcontrolador (MCU) integra, num único chip:\n\n- **CPU** — o núcleo de processamento (ex: ARM Cortex-M, AVR, Xtensa no ESP32)\n- **Memória Flash** — onde o programa fica gravado permanentemente\n- **RAM** — memória volátil para variáveis em tempo de execução\n- **Periféricos** — temporizadores, conversores ADC/DAC, portas de comunicação\n- **Pinos GPIO** — General Purpose Input/Output, controláveis por software\n\n## 2. Portas GPIO\n\nCada pino GPIO pode ser configurado como entrada (ler um sinal, ex: um botão) ou saída (controlar algo, ex: acender um LED). Em baixo nível, isto é feito escrevendo diretamente em registradores do microcontrolador.\n\nExemplo conceptual em pseudo-registrador (estilo AVR/Arduino):\n\n```c\n// Configura o pino 13 como saída\nDDRB |= (1 << PB5);\n\n// Liga o pino 13 (nível alto)\nPORTB |= (1 << PB5);\n\n// Desliga o pino 13 (nível baixo)\nPORTB &= ~(1 << PB5);\n```\n\n## 3. Protocolos de comunicação: I2C, SPI e UART\n\n| Protocolo | Fios | Velocidade | Uso típico |\n|---|---|---|---|\n| **UART** | 2 (TX, RX) | Baixa-média | Comunicação ponto-a-ponto simples (ex: módulo GPS, debug via serial) |\n| **I2C** | 2 (SDA, SCL) | Média | Vários sensores no mesmo barramento, com endereços diferentes |\n| **SPI** | 4 (MOSI, MISO, SCK, CS) | Alta | Displays, cartões SD, sensores que exigem alta taxa de transferência |\n\n- **UART** é assíncrono — não há linha de relógio partilhada, ambos os lados combinam a mesma *baud rate* previamente.\n- **I2C** usa endereços de 7 bits, permitindo múltiplos dispositivos no mesmo par de fios.\n- **SPI** é o mais rápido, mas exige um pino de *Chip Select* (CS) dedicado por dispositivo.\n\n## 4. Primeiro projeto: LED intermitente (blink) em C puro, para AVR\n\n```c\n#include <avr/io.h>\n#include <util/delay.h>\n\n#define LED_PIN PB5\n\nint main(void) {\n    // Configura o pino do LED como saída\n    DDRB |= (1 << LED_PIN);\n\n    while (1) {\n        PORTB ^= (1 << LED_PIN); // Inverte o estado do pino (toggle)\n        _delay_ms(500);           // Espera 500 ms\n    }\n\n    return 0;\n}\n```\n\nCompilação e gravação (exemplo com `avr-gcc` e um Arduino Uno como programador):\n\n```bash\navr-gcc -mmcu=atmega328p -Os -o blink.elf blink.c\navr-objcopy -O ihex blink.elf blink.hex\navrdude -c arduino -p atmega328p -P /dev/ttyUSB0 -b 115200 -U flash:w:blink.hex\n```\n\n## 5. O mesmo projeto em Arduino (C++ simplificado)\n\n```cpp\n#define LED_PIN 13\n\nvoid setup() {\n    pinMode(LED_PIN, OUTPUT);\n}\n\nvoid loop() {\n    digitalWrite(LED_PIN, HIGH);\n    delay(500);\n    digitalWrite(LED_PIN, LOW);\n    delay(500);\n}\n```\n\nO `Arduino IDE` abstrai o acesso direto aos registradores (`DDRB`, `PORTB`) através de funções como `pinMode()` e `digitalWrite()` — internamente, fazem exatamente a mesma manipulação de registradores mostrada na secção 2.\n\n## Conclusão\n\nEntender o que acontece \"por baixo do capô\" das funções do Arduino — manipulação direta de registradores — é o que separa quem só copia exemplos de quem consegue depurar e otimizar sistemas embarcados de verdade.",
+    "cover_image": "",
+    "category": 3,
+    "status": "published",
+    "published_at": "2026-09-01T13:36:01.677Z",
+    "reading_time_minutes": 3,
+    "meta_title": "Introdução Prática a Sistemas Embarcados",
+    "meta_description": "Arquitetura de microcontroladores, portas GPIO, protocolos I2C/SPI/UART e um primeiro projeto em C."
+  }
+},
+{
+  "model": "api.education",
+  "pk": 1,
+  "fields": {
+    "created_at": "2026-09-11T20:40:02.184Z",
+    "updated_at": "2026-09-13T13:36:01.740Z",
+    "institution": "Universidade Metodista Unida de Moçambique",
+    "degree": "Licenciatura em Engenharia Informática e Tecnologias",
+    "location": "Moçambique",
+    "start_date": "2022-03-01",
+    "end_date": "2026-07-24",
+    "description": "Formação em Engenharia Informática e Tecnologias, com defesa do trabalho de conclusão de curso em julho de 2026.",
+    "order": 1
+  }
+},
+{
+  "model": "api.experience",
+  "pk": 1,
+  "fields": {
+    "created_at": "2026-09-11T20:40:02.194Z",
+    "updated_at": "2026-09-13T13:36:01.751Z",
+    "title": "Desenvolvedor Full-Stack Autónomo",
+    "organization": "Projetos independentes",
+    "location": "Maxixe, Inhambane",
+    "experience_type": "project",
+    "start_date": "2023-01-01",
+    "end_date": null,
+    "is_current": true,
+    "description": "Conceção, arquitetura e execução independente de sistemas web, incluindo o GateFlow (check-in de eventos) e a plataforma de E-Commerce & Delivery, atualmente em desenvolvimento.",
+    "order": 1
+  }
+},
+{
+  "model": "api.experience",
+  "pk": 2,
+  "fields": {
+    "created_at": "2026-09-11T20:40:02.205Z",
+    "updated_at": "2026-09-11T20:40:02.205Z",
+    "title": "Prestador de Serviços Técnicos",
+    "organization": "Autónomo",
+    "location": "Maxixe, Inhambane",
+    "experience_type": "work",
+    "start_date": "2022-06-01",
+    "end_date": null,
+    "is_current": true,
+    "description": "Prestação de serviços de manutenção de computadores, instalações eletrotécnicas residenciais, assistência técnica mobile e treinamento em software de escritório.",
+    "order": 2
+  }
+},
+{
+  "model": "api.experience",
+  "pk": 3,
+  "fields": {
+    "created_at": "2026-09-11T20:40:02.216Z",
+    "updated_at": "2026-09-11T20:40:02.216Z",
+    "title": "Defesa da Monografia Final de Curso",
+    "organization": "Universidade Metodista Unida de Moçambique",
+    "location": "Moçambique",
+    "experience_type": "certification",
+    "start_date": "2026-07-24",
+    "end_date": "2026-07-24",
+    "is_current": false,
+    "description": "Defesa pública do projeto de final de curso em Engenharia Informática e Tecnologias, com nota 14 valores.",
+    "order": 3
+  }
+},
+{
+  "model": "api.experience",
+  "pk": 4,
+  "fields": {
+    "created_at": "2026-09-12T22:43:26.412Z",
+    "updated_at": "2026-09-13T13:36:01.762Z",
+    "title": "Técnico de Redes, Eletricista e Prestador de Serviços Técnicos",
+    "organization": "Autónomo",
+    "location": "Maxixe, Inhambane",
+    "experience_type": "work",
+    "start_date": "2022-06-01",
+    "end_date": null,
+    "is_current": true,
+    "description": "Prestação de serviços de manutenção de computadores, redes de computadores e fusão de fibra óptica, instalações elétricas residenciais, assistência técnica mobile e treinamento em software de escritório.",
+    "order": 2
+  }
+},
+{
+  "model": "api.experience",
+  "pk": 5,
+  "fields": {
+    "created_at": "2026-09-12T22:43:26.423Z",
+    "updated_at": "2026-09-13T13:36:01.782Z",
+    "title": "Defesa do Trabalho de Conclusão de Curso",
+    "organization": "Universidade Metodista Unida de Moçambique",
+    "location": "Moçambique",
+    "experience_type": "certification",
+    "start_date": "2026-07-24",
+    "end_date": "2026-07-24",
+    "is_current": false,
+    "description": "Defesa pública do trabalho de final de curso em Engenharia Informática e Tecnologias.",
+    "order": 3
+  }
+},
+{
+  "model": "api.skill",
+  "pk": 49,
+  "fields": {
+    "name": "SQLite",
+    "category": "backend",
+    "proficiency": 90,
+    "order": 0
+  }
+},
+{
+  "model": "api.skill",
+  "pk": 50,
+  "fields": {
+    "name": "C/C++ (Embarcados)",
+    "category": "embedded",
+    "proficiency": 92,
+    "order": 1
+  }
+},
+{
+  "model": "api.skill",
+  "pk": 51,
+  "fields": {
+    "name": "Microcontroladores (Arduino, Raspberry Pi)",
+    "category": "embedded",
+    "proficiency": 90,
+    "order": 2
+  }
+},
+{
+  "model": "api.skill",
+  "pk": 52,
+  "fields": {
+    "name": "Eletrónica Aplicada",
+    "category": "embedded",
+    "proficiency": 88,
+    "order": 3
+  }
+},
+{
+  "model": "api.skill",
+  "pk": 53,
+  "fields": {
+    "name": "Hardware & Diagnóstico de Computadores",
+    "category": "tools",
+    "proficiency": 90,
+    "order": 4
+  }
+},
+{
+  "model": "api.skill",
+  "pk": 54,
+  "fields": {
+    "name": "Redes de Computadores",
+    "category": "network",
+    "proficiency": 92,
+    "order": 5
+  }
+},
+{
+  "model": "api.skill",
+  "pk": 55,
+  "fields": {
+    "name": "Fusão de Fibra Óptica",
+    "category": "network",
+    "proficiency": 88,
+    "order": 6
+  }
+},
+{
+  "model": "api.skill",
+  "pk": 56,
+  "fields": {
+    "name": "Git & GitHub",
+    "category": "tools",
+    "proficiency": 88,
+    "order": 7
+  }
+},
+{
+  "model": "api.skill",
+  "pk": 57,
+  "fields": {
+    "name": "Linux",
+    "category": "tools",
+    "proficiency": 85,
+    "order": 8
+  }
+},
+{
+  "model": "api.skill",
+  "pk": 58,
+  "fields": {
+    "name": "Windows",
+    "category": "tools",
+    "proficiency": 85,
+    "order": 9
+  }
+},
+{
+  "model": "api.skill",
+  "pk": 59,
+  "fields": {
+    "name": "Python (Django / DRF)",
+    "category": "backend",
+    "proficiency": 65,
+    "order": 10
+  }
+},
+{
+  "model": "api.skill",
+  "pk": 60,
+  "fields": {
+    "name": "PostgreSQL",
+    "category": "backend",
+    "proficiency": 60,
+    "order": 11
+  }
+},
+{
+  "model": "api.skill",
+  "pk": 61,
+  "fields": {
+    "name": "MySQL",
+    "category": "backend",
+    "proficiency": 60,
+    "order": 12
+  }
+},
+{
+  "model": "api.skill",
+  "pk": 62,
+  "fields": {
+    "name": "React",
+    "category": "frontend",
+    "proficiency": 60,
+    "order": 13
+  }
+},
+{
+  "model": "api.skill",
+  "pk": 63,
+  "fields": {
+    "name": "Next.js",
+    "category": "frontend",
+    "proficiency": 40,
+    "order": 14
+  }
+},
+{
+  "model": "api.skill",
+  "pk": 64,
+  "fields": {
+    "name": "Tailwind CSS",
+    "category": "frontend",
+    "proficiency": 40,
+    "order": 15
+  }
+},
+{
+  "model": "api.skill",
+  "pk": 65,
+  "fields": {
+    "name": "TypeScript",
+    "category": "frontend",
+    "proficiency": 35,
+    "order": 16
+  }
+},
+{
+  "model": "api.profile",
+  "pk": 1,
+  "fields": {
+    "full_name": "Tiago Victor Banze",
+    "headline": "Engenheiro Informático | Desenvolvedor Full-Stack | Técnico de Redes e Telecomunicações | Técnico Eletricista Residencial",
+    "bio_short": "Engenheiro Informático formado pela Universidade Metodista Unida de Moçambique, com forte raciocínio analítico e paixão por transformar ideias em sistemas funcionais do código ao circuito.",
+    "bio_long": "Nascido em Maputo, Tiago mudou-se em 2022 para a cidade da Maxixe, província de Inhambane, onde reside e atua de forma autónoma como Desenvolvedor Full-Stack, Técnico de Redes e Telecomunicações e Técnico Eletricista Residencial. Ao longo da sua formação em Engenharia Informática e Tecnologias, desenvolveu um pensamento crítico apurado, voltado para a resolução de problemas complexos de forma independente desde a arquitetura de sistemas web até à electrónica aplicada, redes de computadores e fusão de fibra óptica.",
+    "location": "Maxixe, Inhambane, Moçambique",
+    "email": "tiagovbanze@gmail.com",
+    "whatsapp_number": "+258847388489",
+    "github_url": "https://github.com/tiago-banze",
+    "facebook_url": "https://www.facebook.com/tiago.banze.1",
+    "cv_file": "cv/CV_Tiago_Victor_Banze.pdf",
+    "avatar": "profile/tiago-vitor-banze_QOySSc7.jpg",
+    "about_image": ""
+  }
+},
+{
+  "model": "api.certification",
+  "pk": 1,
+  "fields": {
+    "created_at": "2026-09-13T15:46:09.766Z",
+    "updated_at": "2026-09-13T16:11:22.417Z",
+    "title": "Curso de Sistemas Fotovoltaicos Off-Grid Online-Presencial",
+    "issuer": "Sarcangels",
+    "issuer_url": "",
+    "issue_date": "2026-06-02",
+    "credential_url": "",
+    "file": "certifications/certificado_solar.jpg",
+    "order": 1
+  }
+},
+{
+  "model": "api.certification",
+  "pk": 2,
+  "fields": {
+    "created_at": "2026-09-13T15:54:58.321Z",
+    "updated_at": "2026-09-13T16:11:22.393Z",
+    "title": "Curso de Eletricidade Instaladora",
+    "issuer": "Centro de Formação Profissional Winner",
+    "issuer_url": "https://www.facebook.com/profile.php?id=100054667800417",
+    "issue_date": "2019-09-14",
+    "credential_url": "",
+    "file": "certifications/Certificado_Electrecidade.pdf",
+    "order": 0
+  }
+},
+{
+  "model": "auth.user",
+  "fields": {
+    "password": "pbkdf2_sha256$720000$gtuFyso5FRWY6iurfXEFBI$wPSCjo7vUj5q4JXOBFpsLFrB4v9Q4bs7mwngXxcroqg=",
+    "last_login": "2026-09-13T08:32:50.435Z",
+    "is_superuser": true,
+    "username": "tiago",
+    "first_name": "tiago victor",
+    "last_name": "banze",
+    "email": "tiagovbanze@gmail.com",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2026-09-12T23:00:42Z",
+    "groups": [],
+    "user_permissions": []
+  }
+}
+]
