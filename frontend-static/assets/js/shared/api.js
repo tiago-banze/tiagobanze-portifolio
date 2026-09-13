@@ -6,7 +6,7 @@
 // Depois de publicar o backend no Vercel, troque o valor abaixo pelo
 // endereço real (ex.: 'https://tiagobanze-backend.vercel.app/api').
 // Em localhost, continua a usar o Django local automaticamente.
-const PRODUCTION_API_BASE = 'https://TROQUE-PELO-SEU-BACKEND.vercel.app/api';
+const PRODUCTION_API_BASE = 'https://tiagobanze-portifolio.vercel.app/api';
 
 const isLocal = ['localhost', '127.0.0.1'].includes(window.location.hostname);
 const API_BASE = isLocal ? 'http://localhost:8000/api' : PRODUCTION_API_BASE;
