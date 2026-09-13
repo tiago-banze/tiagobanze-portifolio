@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-MZ">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Projetos — Tiago Victor Banze</title>
+<meta name="description" content="Sistemas e projetos desenvolvidos por Tiago Victor Banze — Engenharia de Software, Python, Django, React e IoT.">
+<script>
+  (function () {
+    var stored = localStorage.getItem('theme');
+    var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    if (stored ? stored === 'dark' : prefersDark) document.documentElement.classList.add('dark');
+  })();
+</script>
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = { darkMode: 'class', theme: { extend: { colors: {
+    ink: { DEFAULT:'#0D1512',50:'#F4F6F4',100:'#E1E7E3',200:'#B9C6BE',300:'#8CA095',400:'#5B6F62',500:'#3A4A3F',600:'#25322A',700:'#182019',800:'#111713',900:'#0D1512',950:'#080C0A' },
+    paper: { DEFAULT:'#F2EEE4', soft:'#EAE4D6', card:'#FBF9F3' },
+    copper: { DEFAULT:'#B8703E', light:'#D08F5D', dark:'#8E5530' },
+    teal: { DEFAULT:'#3B7A4E', light:'#5CA173', dark:'#28583A' },
+  } } } };
+</script>
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="bg-surface text-ink-dynamic">
+
+<div id="navbar-mount"></div>
+
+<main>
+  <section class="section-pad">
+    <div class="container-shell">
+      <p class="font-mono text-xs uppercase tracking-widest text-accent-dynamic">Portfólio</p>
+      <h1 class="mt-3 font-display text-4xl font-semibold text-ink-dynamic">Sistemas &amp; Projetos</h1>
+      <p class="mt-4 max-w-2xl font-body text-base text-muted-dynamic">
+        Uma seleção de sistemas desenvolvidos de forma independente — do problema técnico à solução em produção.
+      </p>
+      <div id="projects-grid" class="mt-12 grid gap-6 md:grid-cols-2">
+        <div class="skeleton h-64 rounded-2xl"></div>
+        <div class="skeleton h-64 rounded-2xl"></div>
+        <div class="skeleton h-64 rounded-2xl"></div>
+        <div class="skeleton h-64 rounded-2xl"></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<div id="footer-mount"></div>
+<div id="whatsapp-float-mount"></div>
+
+<script src="assets/js/shared/icons.js"></script>
+<script src="assets/js/shared/theme.js"></script>
+<script src="assets/js/shared/api.js"></script>
+<script src="assets/js/shared/partials.js"></script>
+<script src="assets/js/pages/projetos.js"></script>
+</body>
+</html>

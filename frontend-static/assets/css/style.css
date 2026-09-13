@@ -1,0 +1,176 @@
+/*
+  Tiago Victor Banze — Portfólio (versão HTML5 + JS puro + Tailwind CDN)
+  Este ficheiro define as variáveis de cor por tema e as classes utilitárias
+  que o Tailwind (via CDN) não cobre sozinho. Mesma paleta da versão anterior.
+*/
+
+:root {
+  --font-display: 'Segoe UI Semibold', 'Segoe UI', system-ui, -apple-system, sans-serif;
+  --font-body: 'Segoe UI', system-ui, -apple-system, Roboto, Helvetica, Arial, sans-serif;
+  --font-mono: 'Consolas', 'Cascadia Mono', 'Courier New', monospace;
+
+  --bg: 242 238 228;          /* paper */
+  --bg-soft: 234 228 214;     /* paper-soft */
+  --bg-card: 251 249 243;     /* paper-card */
+  --fg: 13 21 18;             /* ink */
+  --fg-muted: 58 74 63;       /* ink-500 */
+  --border: 201 193 175;
+  --accent: 184 112 62;       /* copper */
+  --accent-strong: 142 85 48; /* copper-dark */
+  --accent-2: 59 122 78;      /* teal / foliage-green */
+  --signal: 196 138 30;
+  --ring: 184 112 62;
+}
+
+html.dark {
+  --bg: 13 21 18;             /* ink */
+  --bg-soft: 17 23 19;        /* ink-800 */
+  --bg-card: 24 32 25;        /* ink-700 */
+  --fg: 242 238 228;          /* paper */
+  --fg-muted: 185 198 190;    /* ink-200 */
+  --border: 37 50 42;
+  --accent: 208 143 93;       /* copper-light */
+  --accent-strong: 184 112 62;
+  --accent-2: 92 161 115;     /* teal-light */
+  --signal: 228 163 57;
+  --ring: 208 143 93;
+}
+
+* { border-color: rgb(var(--border)); }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background-color: rgb(var(--bg));
+  color: rgb(var(--fg));
+  font-family: var(--font-body);
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+::selection { background-color: rgb(var(--accent) / 0.3); color: rgb(var(--fg)); }
+
+:focus-visible {
+  outline: 2px solid rgb(var(--ring));
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+.font-display { font-family: var(--font-display); }
+.font-body { font-family: var(--font-body); }
+.font-mono { font-family: var(--font-mono); }
+
+.bg-surface { background-color: rgb(var(--bg)); }
+.bg-surface-soft { background-color: rgb(var(--bg-soft)); }
+.bg-surface-card { background-color: rgb(var(--bg-card)); }
+.text-ink-dynamic { color: rgb(var(--fg)); }
+.text-muted-dynamic { color: rgb(var(--fg-muted)); }
+.border-dynamic { border-color: rgb(var(--border)); }
+.text-accent-dynamic { color: rgb(var(--accent)); }
+.bg-accent-dynamic { background-color: rgb(var(--accent)); }
+.bg-teal { background-color: rgb(var(--accent-2)); }
+.text-teal-dark { color: rgb(var(--accent-2)); }
+
+.container-shell { margin-inline: auto; width: 100%; max-width: 72rem; padding-inline: 1.25rem; }
+@media (min-width: 640px) { .container-shell { padding-inline: 2rem; } }
+
+.section-pad { padding-block: 5rem; }
+@media (min-width: 640px) { .section-pad { padding-block: 7rem; } }
+
+.link-underline {
+  background-image: linear-gradient(rgb(var(--accent)), rgb(var(--accent)));
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  background-size: 0% 1.5px;
+  transition: background-size 0.3s ease;
+}
+.link-underline:hover { background-size: 100% 1.5px; }
+
+.input-base {
+  width: 100%;
+  border-radius: 0.75rem;
+  border: 1px solid rgb(var(--border));
+  background-color: rgb(var(--bg-card));
+  padding: 0.7rem 1rem;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  color: rgb(var(--fg));
+}
+.input-base::placeholder { color: rgb(var(--fg-muted)); }
+.input-base:focus {
+  outline: none;
+  border-color: rgb(var(--accent));
+  box-shadow: 0 0 0 3px rgb(var(--accent) / 0.15);
+}
+
+.bg-circuit-grid {
+  background-image:
+    linear-gradient(to right, rgba(184,112,62,0.08) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(184,112,62,0.08) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+@keyframes fade-up {
+  0% { opacity: 0; transform: translateY(12px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-up { animation: fade-up 0.6s ease-out forwards; }
+
+@keyframes trace-in {
+  0% { stroke-dashoffset: 1000; opacity: 0; }
+  100% { stroke-dashoffset: 0; opacity: 1; }
+}
+.animate-trace-in { animation: trace-in 1.8s ease-out forwards; }
+
+@keyframes spin { to { transform: rotate(360deg); } }
+.animate-spin { animation: spin 1s linear infinite; }
+
+@keyframes ping {
+  75%, 100% { transform: scale(2); opacity: 0; }
+}
+.animate-ping { animation: ping 1.5s cubic-bezier(0, 0, 0.2, 1) infinite; }
+
+/* Conteúdo do blog (markdown já convertido em HTML pelo backend/JS) */
+.prose-portfolio { font-family: var(--font-body); font-size: 1.05rem; line-height: 1.75; color: rgb(var(--fg)); max-width: 68ch; }
+.prose-portfolio h2 { margin-top: 2.5rem; margin-bottom: 1rem; font-family: var(--font-display); font-size: 1.5rem; font-weight: 600; }
+.prose-portfolio h3 { margin-top: 2rem; margin-bottom: 0.75rem; font-family: var(--font-display); font-size: 1.25rem; font-weight: 600; }
+.prose-portfolio p { margin-bottom: 1.25rem; }
+.prose-portfolio ul, .prose-portfolio ol { margin-bottom: 1.25rem; margin-left: 1.25rem; }
+.prose-portfolio ul { list-style: disc; }
+.prose-portfolio ol { list-style: decimal; }
+.prose-portfolio li { margin-bottom: 0.5rem; }
+.prose-portfolio a { color: rgb(var(--accent)); text-decoration: underline; text-underline-offset: 2px; }
+.prose-portfolio code { border-radius: 0.25rem; background-color: rgb(var(--accent-2) / 0.1); padding: 0.15rem 0.35rem; font-family: var(--font-mono); font-size: 0.85em; color: rgb(var(--accent-2)); }
+.prose-portfolio pre { margin-bottom: 1.25rem; overflow-x: auto; border-radius: 0.75rem; border: 1px solid rgb(var(--border)); background-color: rgb(var(--bg-card)); padding: 1rem; font-family: var(--font-mono); font-size: 0.875rem; }
+.prose-portfolio pre code { background-color: transparent; padding: 0; }
+.prose-portfolio blockquote { margin-bottom: 1.25rem; border-left: 2px solid rgb(var(--accent)); padding-left: 1rem; font-style: italic; color: rgb(var(--fg-muted)); }
+.prose-portfolio table { margin-bottom: 1.25rem; width: 100%; border-collapse: collapse; overflow: hidden; border-radius: 0.5rem; border: 1px solid rgb(var(--border)); font-size: 0.875rem; }
+.prose-portfolio th, .prose-portfolio td { border: 1px solid rgb(var(--border)); padding: 0.5rem 0.75rem; text-align: left; }
+
+/* Skeleton simples usado enquanto os dados ainda não chegaram da API */
+.skeleton { background-color: rgb(var(--border) / 0.5); border-radius: 0.5rem; position: relative; overflow: hidden; }
+.skeleton::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(90deg, transparent, rgb(var(--bg-card) / 0.6), transparent);
+  animation: shimmer 1.4s infinite;
+}
+@keyframes shimmer { 100% { transform: translateX(100%); } }
+
+/* Aviso de erro de ligação — visível, nunca escondido atrás de dados falsos */
+.conn-error {
+  border: 1px solid rgb(220 38 38 / 0.4);
+  background-color: rgb(220 38 38 / 0.08);
+  color: rgb(185 28 28);
+  border-radius: 0.75rem;
+  padding: 1rem 1.25rem;
+  font-size: 0.9rem;
+}
+html.dark .conn-error { color: rgb(252 165 165); }
