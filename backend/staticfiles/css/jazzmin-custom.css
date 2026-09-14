@@ -1,0 +1,39 @@
+/* Pequenos ajustes de cor no tema Jazzmin (base: bootswatch "flatly"),
+   aproximando o acento do painel /admin da paleta cobre/verde do site. */
+
+:root {
+  --portfolio-copper: #b8703e;
+  --portfolio-foliage: #3b7a4e;
+}
+
+.brand-link,
+.main-sidebar .brand-link {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.nav-sidebar .nav-link.active {
+  background-color: var(--portfolio-foliage) !important;
+  border-radius: 6px;
+}
+
+.btn-outline-primary,
+a.btn-primary,
+.bg-primary {
+  border-color: var(--portfolio-copper) !important;
+  color: var(--portfolio-copper) !important;
+}
+
+.btn-outline-primary:hover {
+  background-color: var(--portfolio-copper) !important;
+  color: #fff !important;
+}
+
+.login-page .login-box .card {
+  border-top: 4px solid var(--portfolio-copper);
+  border-radius: 10px;
+}
+
+.small-box.bg-info,
+.card-primary.card-outline {
+  border-top-color: var(--portfolio-foliage) !important;
+}
