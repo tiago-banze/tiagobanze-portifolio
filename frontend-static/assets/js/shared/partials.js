@@ -128,8 +128,38 @@ function renderWhatsAppFloat() {
     </a>`;
 }
 
+function renderBackToTop() {
+  const mount = document.getElementById('back-to-top-mount');
+  if (!mount) return;
+  mount.innerHTML = `
+    <button type="button" id="back-to-top-btn" aria-label="Voltar ao topo da página"
+       class="fixed bottom-6 left-5 z-50 flex h-12 w-12 translate-y-2 items-center justify-center rounded-full border border-dynamic bg-surface/90 text-ink-dynamic opacity-0 shadow-lg shadow-black/10 backdrop-blur-md transition-all duration-300 pointer-events-none hover:scale-105 active:scale-95 sm:bottom-8 sm:left-8">
+      ${icon('chevron-up', 'h-5 w-5')}
+    </button>`;
+
+  const btn = document.getElementById('back-to-top-btn');
+  const SHOW_AFTER_PX = 400;
+
+  const toggleVisibility = () => {
+    const shouldShow = window.scrollY > SHOW_AFTER_PX;
+    btn.classList.toggle('opacity-0', !shouldShow);
+    btn.classList.toggle('opacity-100', shouldShow);
+    btn.classList.toggle('translate-y-2', !shouldShow);
+    btn.classList.toggle('translate-y-0', shouldShow);
+    btn.classList.toggle('pointer-events-none', !shouldShow);
+  };
+
+  window.addEventListener('scroll', toggleVisibility, { passive: true });
+  toggleVisibility();
+
+  btn.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   renderNavbar();
   renderFooter();
   renderWhatsAppFloat();
+  renderBackToTop();
 });
