@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://tiagobanze-portifolio-qn47.vercel.app/sitemap.xml

@@ -8,6 +8,7 @@ function formatDateShort(dateStr) {
 function renderPostHeader(post) {
   document.getElementById('page-title').textContent = `${post.meta_title || post.title} — Tiago Victor Banze`;
   document.getElementById('page-description').setAttribute('content', post.meta_description || post.excerpt);
+  document.getElementById('page-canonical').setAttribute('href', `https://tiagobanze-portifolio-qn47.vercel.app/post.html?slug=${post.slug}`);
 
   document.getElementById('post-header').innerHTML = `
     ${post.category ? `<span class="font-mono text-xs uppercase tracking-wide text-teal-dark">${post.category.name}</span>` : ''}
