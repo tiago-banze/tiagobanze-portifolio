@@ -1,8 +1,7 @@
 """
-Django settings for the Tiago Victor Banze Portfolio backend.
+Definições do backend do portefólio.
 
-Projetado para rodar localmente com SQLite e migrar sem atrito
-para PostgreSQL em produção (via DATABASE_URL).
+Em desenvolvimento usa SQLite. Para PostgreSQL basta definir DATABASE_URL.
 """
 from pathlib import Path
 from decouple import config, Csv
@@ -54,10 +53,10 @@ INSTALLED_APPS = [
     'taggit',
 ]
 
-# O Vercel apaga tudo o que for enviado (avatar, CV, certificados) a cada novo
-# deploy, porque o disco é temporário. Por isso, em produção guardamos esses
-# ficheiros no Cloudinary (gratuito) em vez do disco local.
-# Basta definir CLOUDINARY_URL nas variáveis de ambiente do Vercel; em
+# A Vercel apaga tudo o que for enviado (avatar, CV, certificados) a cada novo
+# deploy, porque o disco é temporário. Por isso, em produção os ficheiros
+# ficam no Cloudinary (gratuito) e não no disco local.
+# Basta definir CLOUDINARY_URL nas variáveis de ambiente da Vercel; em
 # desenvolvimento local (sem essa variável), continua tudo a ir para media/.
 CLOUDINARY_URL = config('CLOUDINARY_URL', default='')
 if CLOUDINARY_URL:
@@ -122,7 +121,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # ----------------------------------------------------------------------------
 # Internacionalização
 # ----------------------------------------------------------------------------
-LANGUAGE_CODE = 'pt-mz'
+LANGUAGE_CODE = 'pt'
 TIME_ZONE = 'Africa/Maputo'
 USE_I18N = True
 USE_TZ = True
@@ -141,7 +140,7 @@ MEDIA_ROOT = BASE_DIR / 'media'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # ----------------------------------------------------------------------------
-# CORS — permite que o front-end Next.js consuma a API
+# CORS: permite que o site (noutro endereço) leia a API
 # ----------------------------------------------------------------------------
 CORS_ALLOWED_ORIGINS = config(
     'CORS_ALLOWED_ORIGINS',
@@ -189,13 +188,13 @@ REST_FRAMEWORK = {
 SITE_URL = config('SITE_URL', default='https://tiagobanze.dev')
 
 # ----------------------------------------------------------------------------
-# Jazzmin — tema visual do painel /admin
+# Jazzmin: tema visual do painel /admin
 # ----------------------------------------------------------------------------
 JAZZMIN_SETTINGS = {
     "site_title": "Painel Tiago Victor Banze",
     "site_header": "Tiago Victor Banze",
     "site_brand": "Tiago Victor Banze",
-    "welcome_sign": "Bem-vindo ao painel do seu portfólio",
+    "welcome_sign": "Painel do portefólio",
     "copyright": "Tiago Victor Banze",
     "search_model": ["api.Post", "api.Project"],
     "show_sidebar": True,
@@ -209,6 +208,7 @@ JAZZMIN_SETTINGS = {
         "api.Education": "fas fa-graduation-cap",
         "api.Experience": "fas fa-briefcase",
         "api.Skill": "fas fa-chart-bar",
+        "api.Certification": "fas fa-certificate",
         "api.ContactMessage": "fas fa-envelope",
         "api.Comment": "fas fa-comments",
         "auth.User": "fas fa-user",
@@ -216,7 +216,7 @@ JAZZMIN_SETTINGS = {
     },
     "order_with_respect_to": [
         "api.Profile", "api.Service", "api.Project", "api.Category", "api.Post",
-        "api.Comment", "api.Education", "api.Experience", "api.Skill", "api.ContactMessage",
+        "api.Comment", "api.Education", "api.Experience", "api.Skill", "api.Certification", "api.ContactMessage",
     ],
     "hide_apps": [],
     "hide_models": [],

@@ -1,31 +1,18 @@
-// Alternância de tema claro/escuro — JavaScript puro, sem dependências.
-// A escolha do utilizador fica guardada no localStorage do navegador.
-//
-// Usamos "delegação de evento" (o clique é escutado no document, não no
-// botão em si) porque o botão só existe depois do navbar.js o injetar —
-// isso evita o bug de o clique nunca ficar ligado a nada.
+// Tema claro/escuro. A escolha fica guardada no navegador.
+// O clique é escutado no document porque o botão só existe depois de o
+// cabeçalho ser criado pelo partials.js.
 
-function isDarkMode() {
-  return document.documentElement.classList.contains('dark');
-}
-
-function updateToggleIcon(btn) {
-  btn.innerHTML = isDarkMode() ? icon('sun', 'h-4 w-4') : icon('moon', 'h-4 w-4');
-}
-
-function refreshThemeIcons() {
-  document.querySelectorAll('[data-theme-toggle]').forEach(updateToggleIcon);
-}
-
-function toggleTheme() {
-  const isDark = document.documentElement.classList.toggle('dark');
-  localStorage.setItem('theme', isDark ? 'dark' : 'light');
-  refreshThemeIcons();
+function atualizarIconesDoTema() {
+  const escuro = document.documentElement.classList.contains('dark');
+  document.querySelectorAll('[data-theme-toggle]').forEach((btn) => {
+    btn.innerHTML = icon(escuro ? 'sun' : 'moon');
+    btn.setAttribute('aria-label', escuro ? 'Mudar para o tema claro' : 'Mudar para o tema escuro');
+  });
 }
 
 document.addEventListener('click', (e) => {
-  const btn = e.target.closest('[data-theme-toggle]');
-  if (btn) toggleTheme();
+  if (!e.target.closest('[data-theme-toggle]')) return;
+  const escuro = document.documentElement.classList.toggle('dark');
+  try { localStorage.setItem('theme', escuro ? 'dark' : 'light'); } catch (_) { /* modo privado */ }
+  atualizarIconesDoTema();
 });
-
-document.addEventListener('DOMContentLoaded', refreshThemeIcons);

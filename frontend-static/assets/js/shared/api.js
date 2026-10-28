@@ -1,82 +1,70 @@
-// Ligação com a API do Django — JavaScript puro, sem framework.
-// IMPORTANTE: propositadamente NÃO existe nenhum "dado de exemplo" aqui.
-// Se a ligação falhar, a função lança um erro e quem chamou decide como
-// mostrar isso na página (nunca escondido atrás de conteúdo falso).
+// Acesso aos dados do site: tudo vem da API Django (em localhost, o Django local).
+// Não há dados de exemplo escondidos aqui. Se a ligação falhar, a página mostra
+// um aviso claro em vez de conteúdo inventado.
 
-// Depois de publicar o backend no Vercel, troque o valor abaixo pelo
-// endereço real (ex.: 'https://tiagobanze-backend.vercel.app/api').
-// Em localhost, continua a usar o Django local automaticamente.
-const PRODUCTION_API_BASE = 'https://tiagobanze-portifolio.vercel.app/api';
+const CFG = window.PORTFOLIO_CONFIG;
+const ESTADO = { modo: 'api' };
 
-const isLocal = ['localhost', '127.0.0.1'].includes(window.location.hostname);
-const API_BASE = isLocal ? 'http://localhost:8000/api' : PRODUCTION_API_BASE;
-
-/**
- * Faz um pedido GET à API. cache:'no-store' garante que o navegador
- * nunca reutiliza uma resposta antiga — cada carregamento de página
- * busca os dados mais recentes do banco de dados.
- */
-async function apiGet(path) {
-  const res = await fetch(`${API_BASE}${path}`, { cache: 'no-store' });
-  if (!res.ok) {
-    throw new Error(`A API respondeu ${res.status} em ${path}`);
-  }
+async function pedir(url, opcoes) {
+  const res = await fetch(url, { cache: 'no-store', ...opcoes });
+  if (!res.ok) throw new Error(`${res.status} em ${url}`);
   return res.json();
 }
 
-function unwrap(data) {
-  // A API pagina algumas listas ({count, results}); outras devolvem array direto.
-  return Array.isArray(data) ? data : (data.results ?? []);
+/** A API devolve listas paginadas ({count, next, results}). Junta todas as páginas. */
+async function lerTodasAsPaginas(caminho) {
+  const saida = [];
+  for (let pagina = 1; pagina < 50; pagina++) {
+    const dados = await pedir(`${CFG.apiBase}${caminho}?page=${pagina}`);
+    if (Array.isArray(dados)) return dados;
+    saida.push(...(dados.results || []));
+    if (!dados.next) break;
+  }
+  return saida;
+}
+
+async function carregar(caminhoApi, _ficheiro, { lista = false } = {}) {
+  return lista ? lerTodasAsPaginas(caminhoApi) : pedir(`${CFG.apiBase}${caminhoApi}`);
 }
 
 const api = {
-  getProfile: () => apiGet('/profile/'),
-  getServices: () => apiGet('/services/').then(unwrap),
-  getProjects: () => apiGet('/projects/').then(unwrap),
-  getPosts: () => apiGet('/posts/').then(unwrap),
-  getPostBySlug: (slug) => apiGet(`/posts/${encodeURIComponent(slug)}/`),
-  getEducation: () => apiGet('/education/').then(unwrap),
-  getExperience: () => apiGet('/experience/').then(unwrap),
-  getSkills: () => apiGet('/skills/').then(unwrap),
-  getCertifications: () => apiGet('/certifications/').then(unwrap),
-  getComments: (slug) => apiGet(`/comments/?post__slug=${encodeURIComponent(slug)}`).then(unwrap),
+  estado: ESTADO,
+  getProfile: () => carregar('/profile/', 'profile'),
+  getServices: () => carregar('/services/', 'services', { lista: true }),
+  getProjects: () => carregar('/projects/', 'projects', { lista: true }),
+  getPosts: () => carregar('/posts/', 'posts', { lista: true }),
+  getPostBySlug: (slug) => carregar(`/posts/${encodeURIComponent(slug)}/`, `posts/${encodeURIComponent(slug)}`),
+  getEducation: () => carregar('/education/', 'education', { lista: true }),
+  getExperience: () => carregar('/experience/', 'experience', { lista: true }),
+  getSkills: () => carregar('/skills/', 'skills', { lista: true }),
+  getCertifications: () => carregar('/certifications/', 'certifications', { lista: true }),
 
-  async sendContactMessage(payload) {
-    const res = await fetch(`${API_BASE}/contact/`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload),
-    });
-    const data = await res.json();
-    if (!res.ok) {
-      const firstError = Object.values(data)[0];
-      const detail = Array.isArray(firstError) ? firstError[0] : 'Não foi possível enviar a mensagem.';
-      return { ok: false, detail };
-    }
-    return { ok: true, detail: data.detail || 'Mensagem enviada com sucesso!' };
+  /** Comentários e mensagens precisam do servidor. Sem ele, não há onde os guardar. */
+  temServidor: () => true,
+
+  async getComments(slug) {
+    if (!api.temServidor()) return [];
+    const dados = await pedir(`${CFG.apiBase}/comments/?post__slug=${encodeURIComponent(slug)}`);
+    return Array.isArray(dados) ? dados : (dados.results || []);
   },
 
-  async postComment(payload) {
-    const res = await fetch(`${API_BASE}/comments/`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload),
+  async enviar(caminho, corpo, mensagemErro) {
+    const res = await fetch(`${CFG.apiBase}${caminho}`, {
+      method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(corpo),
     });
-    const data = await res.json();
+    const dados = await res.json().catch(() => ({}));
     if (!res.ok) {
-      const firstError = Object.values(data)[0];
-      const detail = Array.isArray(firstError) ? firstError[0] : 'Não foi possível publicar o comentário.';
-      return { ok: false, detail };
+      const primeiro = Object.values(dados)[0];
+      return { ok: false, detail: Array.isArray(primeiro) ? primeiro[0] : (dados.detail || mensagemErro) };
     }
-    return { ok: true, detail: 'Comentário publicado!', comment: data };
+    return { ok: true, dados };
   },
+  sendContactMessage: (corpo) => api.enviar('/contact/', corpo, 'Não foi possível enviar a mensagem.'),
+  postComment: (corpo) => api.enviar('/comments/', corpo, 'Não foi possível publicar o comentário.'),
 };
 
-/** Mostra um aviso de erro visível dentro de um contentor, em vez de esconder o problema. */
-function showConnError(container, context) {
-  container.innerHTML = `
-    <div class="conn-error">
-      Não foi possível carregar "${context}" a partir do servidor.
-      Verifique se o backend Django está a correr em ${API_BASE.replace('/api', '')}.
-    </div>`;
+/** Aviso visível dentro de um contentor, para nunca esconder um erro de ligação. */
+function showConnError(contentor, o_que) {
+  contentor.innerHTML = `<div class="conn-error">Não foi possível carregar ${esc(o_que)}. `
+    + 'Se estás a testar no teu computador, confirma que o Django está a correr (python manage.py runserver).</div>';
 }

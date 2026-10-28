@@ -1,118 +1,86 @@
-// Navbar, rodapé e botão flutuante do WhatsApp — construídos uma vez aqui
-// e injetados em todas as páginas, para não repetir o HTML à mão em cada ficheiro.
+// Cabeçalho, rodapé e botão do WhatsApp. São criados aqui uma vez
+// e inseridos em todas as páginas.
 
-const WHATSAPP_NUMBER = '258847388489';
-const WHATSAPP_HREF = `https://wa.me/${WHATSAPP_NUMBER}?text=Ol%C3%A1%20Tiago%2C%20vi%20o%20seu%20portf%C3%B3lio%20e%20gostaria%20de%20falar%20consigo.`;
-
+const WA_TEXTO = 'Olá Tiago, vi o seu portefólio e gostava de falar consigo.';
 const NAV_LINKS = [
   { href: 'index.html#sobre', label: 'Sobre' },
   { href: 'index.html#servicos', label: 'Serviços' },
-  { href: 'projetos.html', label: 'Projetos' },
+  { href: 'index.html#projetos', label: 'Projetos' },
   { href: 'blog.html', label: 'Blog' },
-  { href: 'cv.html', label: 'CV' },
+  { href: 'cv.html', label: 'Currículo' },
   { href: 'index.html#contacto', label: 'Contacto' },
 ];
+
+function paginaAtual() {
+  const f = location.pathname.split('/').pop();
+  return f || 'index.html';
+}
 
 function renderNavbar() {
   const mount = document.getElementById('navbar-mount');
   if (!mount) return;
-
-  const links = NAV_LINKS.map(
-    (l) => `<li><a href="${l.href}" class="link-underline pb-1 font-body text-sm text-ink-dynamic/90 hover:text-ink-dynamic">${l.label}</a></li>`
-  ).join('');
-
-  const mobileLinks = NAV_LINKS.map(
-    (l) => `<li><a href="${l.href}" class="block rounded-lg px-3 py-2.5 font-body text-sm text-ink-dynamic hover:bg-copper/10">${l.label}</a></li>`
-  ).join('');
+  const wa = linkWhatsApp(null, WA_TEXTO);
+  const atual = paginaAtual();
+  const marca = (l) => (l.href === atual ? ' aria-current="page"' : '');
+  const links = NAV_LINKS.map((l) => `<a href="${l.href}"${marca(l)}>${l.label}</a>`).join('');
+  const movel = NAV_LINKS.map((l) => `<li><a href="${l.href}">${l.label}</a></li>`).join('');
 
   mount.innerHTML = `
-    <header class="sticky top-0 z-50 border-b border-dynamic bg-surface/85 backdrop-blur-md">
-      <nav class="container-shell flex h-16 items-center justify-between" aria-label="Navegação principal">
-        <a href="index.html" class="font-display text-lg font-semibold tracking-tight text-ink-dynamic">
-          Tiago<span class="text-accent-dynamic">.</span>Banze
-        </a>
-        <ul class="hidden items-center gap-8 md:flex">${links}</ul>
-        <div class="hidden items-center gap-3 md:flex">
-          <button type="button" data-theme-toggle aria-label="Alternar tema" class="inline-flex h-9 w-9 items-center justify-center rounded-full border border-dynamic text-ink-dynamic"></button>
-          <a href="${WHATSAPP_HREF}" target="_blank" rel="noopener noreferrer"
-             class="rounded-full bg-accent-dynamic px-4 py-2 font-body text-sm font-medium text-[rgb(251_249_243)] transition-transform hover:scale-[1.03] active:scale-[0.98]">
-            Falar no WhatsApp
-          </a>
+    <header class="site-header">
+      <div class="wrap nav">
+        <a class="brand" href="index.html">Tiago Banze</a>
+        <nav class="nav-links" aria-label="Navegação principal">${links}</nav>
+        <div class="nav-right">
+          <button type="button" class="icon-btn" data-theme-toggle></button>
+          <a class="btn btn-small nav-wa" href="${wa}" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+          <button type="button" class="icon-btn menu-btn" id="menu-btn" aria-label="Abrir menu" aria-expanded="false">${icon('menu')}</button>
         </div>
-        <div class="flex items-center gap-2 md:hidden">
-          <button type="button" data-theme-toggle aria-label="Alternar tema" class="inline-flex h-9 w-9 items-center justify-center rounded-full border border-dynamic text-ink-dynamic"></button>
-          <button type="button" id="mobile-menu-btn" aria-label="Abrir menu" aria-expanded="false"
-                  class="inline-flex h-9 w-9 items-center justify-center rounded-full border border-dynamic text-ink-dynamic">${icon('menu', 'h-4 w-4')}</button>
-        </div>
-      </nav>
-      <div id="mobile-menu" class="hidden border-t border-dynamic bg-surface md:hidden">
-        <ul class="container-shell flex flex-col gap-1 py-4">
-          ${mobileLinks}
-          <li class="pt-2">
-            <a href="${WHATSAPP_HREF}" target="_blank" rel="noopener noreferrer"
-               class="block rounded-full bg-accent-dynamic px-4 py-2.5 text-center font-body text-sm font-medium text-[rgb(251_249_243)]">
-              Falar no WhatsApp
-            </a>
-          </li>
-        </ul>
       </div>
+      <div class="mobile-menu hidden" id="mobile-menu"><div class="wrap"><ul>${movel}</ul></div></div>
     </header>`;
 
-  const menuBtn = document.getElementById('mobile-menu-btn');
+  const btn = document.getElementById('menu-btn');
   const menu = document.getElementById('mobile-menu');
-  menuBtn.addEventListener('click', () => {
-    const isOpen = !menu.classList.contains('hidden');
-    menu.classList.toggle('hidden');
-    menuBtn.setAttribute('aria-expanded', String(!isOpen));
-    menuBtn.innerHTML = isOpen ? icon('menu', 'h-4 w-4') : icon('x', 'h-4 w-4');
+  btn.addEventListener('click', () => {
+    const aberto = menu.classList.toggle('hidden') === false;
+    btn.setAttribute('aria-expanded', String(aberto));
+    btn.setAttribute('aria-label', aberto ? 'Fechar menu' : 'Abrir menu');
+    btn.innerHTML = icon(aberto ? 'x' : 'menu');
   });
-
-  document.querySelectorAll('[data-theme-toggle]').forEach((btn) => {
-    const isDark = document.documentElement.classList.contains('dark');
-    btn.innerHTML = isDark ? icon('sun', 'h-4 w-4') : icon('moon', 'h-4 w-4');
-  });
+  menu.addEventListener('click', (e) => { if (e.target.closest('a')) menu.classList.add('hidden'); });
+  atualizarIconesDoTema();
 }
 
 function renderFooter() {
   const mount = document.getElementById('footer-mount');
   if (!mount) return;
-  const year = new Date().getFullYear();
+  const cfg = window.PORTFOLIO_CONFIG;
   mount.innerHTML = `
-    <footer class="border-t border-dynamic bg-surface-soft">
-      <div class="container-shell grid gap-10 py-16 sm:grid-cols-3">
-        <div>
-          <p class="font-display text-lg font-semibold text-ink-dynamic">Tiago<span class="text-accent-dynamic">.</span>Banze</p>
-          <p class="mt-3 max-w-xs font-body text-sm leading-relaxed text-muted-dynamic">
-            Engenheiro Informático &amp; Desenvolvedor Full-Stack, a construir sistemas funcionais a partir da Maxixe, Inhambane.
-          </p>
-          <p class="mt-4 flex items-center gap-1.5 font-body text-sm text-muted-dynamic">
-            ${icon('map-pin', 'h-3.5 w-3.5')} Maxixe, Inhambane, Moçambique
-          </p>
-        </div>
-        <div>
-          <p class="font-body text-sm font-medium text-ink-dynamic">Navegação</p>
-          <ul class="mt-3 space-y-2 font-body text-sm text-muted-dynamic">
-            <li><a href="index.html#sobre" class="link-underline hover:text-ink-dynamic">Sobre</a></li>
-            <li><a href="projetos.html" class="link-underline hover:text-ink-dynamic">Projetos</a></li>
-            <li><a href="blog.html" class="link-underline hover:text-ink-dynamic">Blog</a></li>
-            <li><a href="cv.html" class="link-underline hover:text-ink-dynamic">Curriculum Vitae</a></li>
-          </ul>
-        </div>
-        <div>
-          <p class="font-body text-sm font-medium text-ink-dynamic">Contacto</p>
-          <div class="mt-3 flex items-center gap-3">
-            <a href="https://github.com/tiago-banze" target="_blank" rel="noopener noreferrer" aria-label="Perfil no GitHub"
-               class="inline-flex h-9 w-9 items-center justify-center rounded-full border border-dynamic text-ink-dynamic hover:bg-copper/10">${icon('github', 'h-4 w-4')}</a>
-            <a href="https://www.facebook.com/tiago.banze.1" target="_blank" rel="noopener noreferrer" aria-label="Perfil no Facebook"
-               class="inline-flex h-9 w-9 items-center justify-center rounded-full border border-dynamic text-ink-dynamic hover:bg-copper/10">${icon('facebook', 'h-4 w-4')}</a>
+    <footer class="site-footer">
+      <div class="wrap">
+        <div class="footer-grid">
+          <div>
+            <p><strong>${esc(cfg.nome)}</strong></p>
+            <p class="muted">Engenheiro informático na Maxixe, Inhambane.</p>
           </div>
-          <a href="${WHATSAPP_HREF}" target="_blank" rel="noopener noreferrer" class="mt-4 inline-block font-body text-sm text-accent-dynamic link-underline">
-            +258 84 738 8489 (WhatsApp)
-          </a>
+          <div>
+            <h2>Páginas</h2>
+            <ul>
+              <li><a href="index.html#projetos">Projetos</a></li>
+              <li><a href="blog.html">Blog</a></li>
+              <li><a href="cv.html">Currículo</a></li>
+            </ul>
+          </div>
+          <div>
+            <h2>Contacto</h2>
+            <ul>
+              <li>${htmlTelefone(null, { semBotao: true })}</li>
+              <li><a href="${linkWhatsApp(null, WA_TEXTO)}" target="_blank" rel="noopener noreferrer">WhatsApp</a></li>
+              <li><a href="https://github.com/tiago-banze" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+            </ul>
+          </div>
         </div>
-      </div>
-      <div class="border-t border-dynamic py-6">
-        <p class="container-shell font-body text-xs text-muted-dynamic">© ${year} Tiago Victor Banze. Todos os direitos reservados.</p>
+        <p class="copy">© ${new Date().getFullYear()} ${esc(cfg.nome)}</p>
       </div>
     </footer>`;
 }
@@ -120,46 +88,23 @@ function renderFooter() {
 function renderWhatsAppFloat() {
   const mount = document.getElementById('whatsapp-float-mount');
   if (!mount) return;
-  mount.innerHTML = `
-    <a href="${WHATSAPP_HREF}" target="_blank" rel="noopener noreferrer" aria-label="Contactar Tiago Victor Banze via WhatsApp"
-       class="fixed bottom-6 right-5 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-lg shadow-black/20 transition-transform hover:scale-105 active:scale-95 sm:bottom-8 sm:right-8">
-      ${icon('message', 'h-7 w-7')}
-      <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#25D366] opacity-20"></span>
-    </a>`;
+  mount.innerHTML = `<a class="wa-float" href="${linkWhatsApp(null, WA_TEXTO)}" target="_blank" rel="noopener noreferrer" aria-label="Falar no WhatsApp">${icon('message')}</a>`;
 }
 
 function renderBackToTop() {
   const mount = document.getElementById('back-to-top-mount');
   if (!mount) return;
-  mount.innerHTML = `
-    <button type="button" id="back-to-top-btn" aria-label="Voltar ao topo da página"
-       class="fixed bottom-6 left-5 z-50 flex h-12 w-12 translate-y-2 items-center justify-center rounded-full border border-dynamic bg-surface/90 text-ink-dynamic opacity-0 shadow-lg shadow-black/10 backdrop-blur-md transition-all duration-300 pointer-events-none hover:scale-105 active:scale-95 sm:bottom-8 sm:left-8">
-      ${icon('chevron-up', 'h-5 w-5')}
-    </button>`;
-
-  const btn = document.getElementById('back-to-top-btn');
-  const SHOW_AFTER_PX = 400;
-
-  const toggleVisibility = () => {
-    const shouldShow = window.scrollY > SHOW_AFTER_PX;
-    btn.classList.toggle('opacity-0', !shouldShow);
-    btn.classList.toggle('opacity-100', shouldShow);
-    btn.classList.toggle('translate-y-2', !shouldShow);
-    btn.classList.toggle('translate-y-0', shouldShow);
-    btn.classList.toggle('pointer-events-none', !shouldShow);
-  };
-
-  window.addEventListener('scroll', toggleVisibility, { passive: true });
-  toggleVisibility();
-
-  btn.addEventListener('click', () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  });
+  mount.innerHTML = `<button type="button" class="to-top" id="to-top-btn" aria-label="Voltar ao topo da página">${icon('chevron-up')}</button>`;
+  const btn = document.getElementById('to-top-btn');
+  const atualizar = () => btn.classList.toggle('visivel', window.scrollY > 400);
+  window.addEventListener('scroll', atualizar, { passive: true });
+  atualizar();
+  btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+  renderBackToTop();
   renderNavbar();
   renderFooter();
   renderWhatsAppFloat();
-  renderBackToTop();
 });

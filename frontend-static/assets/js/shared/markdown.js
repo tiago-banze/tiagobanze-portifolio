@@ -1,4 +1,4 @@
-// Conversor Markdown → HTML simples, escrito à mão (sem biblioteca externa).
+// Conversor simples de Markdown para HTML, sem biblioteca externa.
 // Cobre o que os artigos do blog usam: títulos, negrito/itálico, links,
 // código (inline e blocos), listas, citações e tabelas básicas.
 

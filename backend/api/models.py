@@ -47,7 +47,7 @@ class Service(TimeStampedModel):
 
 
 class Project(TimeStampedModel):
-    """Sistemas e projetos desenvolvidos — puxados manualmente ou via GitHub."""
+    """Sistemas e projetos desenvolvidos."""
 
     STATUS_CHOICES = [
         ('production', 'Em Produção'),
@@ -102,7 +102,7 @@ class Category(models.Model):
 
 
 class Post(TimeStampedModel):
-    """Artigos técnicos do blog — suportam Markdown e SEO/OpenGraph."""
+    """Artigos técnicos do blog, escritos em Markdown."""
 
     STATUS_CHOICES = [
         ('draft', 'Rascunho'),
@@ -160,7 +160,7 @@ class Education(TimeStampedModel):
         verbose_name_plural = 'Formação Académica'
 
     def __str__(self):
-        return f"{self.degree} — {self.institution}"
+        return f"{self.degree}, {self.institution}"
 
 
 class Experience(TimeStampedModel):
@@ -215,14 +215,10 @@ class Profile(models.Model):
     """Singleton com os dados centrais exibidos no Hero/Sobre/CV/JSON-LD."""
     full_name = models.CharField(max_length=150, default='Tiago Victor Banze')
     headline = models.CharField(max_length=200, default=(
-        'Engenheiro Informático | Desenvolvedor Full-Stack | '
-        'Técnico de Redes e Telecomunicações | Técnico Eletricista Residencial'
+        'Engenheiro Informático | Programador Full-Stack | '
+        'Técnico de Redes e Telecomunicações | Eletricista Residencial'
     ))
-    bio_short = models.TextField(default=(
-        "Engenheiro Informático formado pela Universidade Metodista Unida de Moçambique, "
-        "com raciocínio analítico apurado e paixão por transformar ideias em sistemas funcionais — "
-        "do software ao hardware."
-    ))
+    bio_short = models.TextField(blank=True)
     bio_long = models.TextField(blank=True)
     location = models.CharField(max_length=150, default='Maxixe, Inhambane, Moçambique')
     email = models.EmailField(blank=True, default='tiagovbanze@gmail.com')
@@ -252,7 +248,7 @@ class Profile(models.Model):
 
 
 class Certification(TimeStampedModel):
-    """Certificados e cursos de curta duração — mostrados em slide no site."""
+    """Certificados e cursos de curta duração."""
 
     title = models.CharField('título do curso/certificado', max_length=200)
     issuer = models.CharField('instituição emissora', max_length=200)
@@ -271,7 +267,7 @@ class Certification(TimeStampedModel):
         verbose_name_plural = 'Certificações'
 
     def __str__(self):
-        return f"{self.title} — {self.issuer}"
+        return f"{self.title} ({self.issuer})"
 
     @property
     def is_pdf(self):
@@ -293,14 +289,14 @@ class ContactMessage(TimeStampedModel):
         verbose_name_plural = 'Mensagens de Contacto'
 
     def __str__(self):
-        return f"{self.name} — {self.subject or 'sem assunto'}"
+        return f"{self.name}: {self.subject or 'sem assunto'}"
 
 
 class Comment(TimeStampedModel):
     """
     Comentário de leitor num artigo do blog.
     O e-mail é recolhido apenas para validação/contacto interno e NUNCA é
-    devolvido pela API nem exibido publicamente — ver CommentSerializer.
+    devolvido pela API nem exibido publicamente (ver CommentSerializer).
     """
     post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='comments')
     name = models.CharField('nome', max_length=100)

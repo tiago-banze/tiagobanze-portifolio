@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-MZ">
+<html lang="pt-PT">
 <head>
 <!-- Google Analytics (GA4) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-CKKE9C1RHK"></script>
@@ -10,81 +10,64 @@
   gtag('config', 'G-CKKE9C1RHK');
 </script>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title id="page-title">Artigo — Tiago Victor Banze</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title id="page-title">Artigo | Tiago Victor Banze</title>
 <meta name="description" id="page-description" content="Artigo técnico de Tiago Victor Banze.">
 <link rel="canonical" id="page-canonical" href="https://tiagobanze-portifolio-qn47.vercel.app/post.html">
+<meta property="og:title" content="Artigo | Tiago Victor Banze">
+<meta property="og:description" content="Artigo técnico de Tiago Victor Banze.">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#f5f6f3">
 <script>
   (function () {
-    var stored = localStorage.getItem('theme');
-    var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    if (stored ? stored === 'dark' : prefersDark) document.documentElement.classList.add('dark');
+    try {
+      var t = localStorage.getItem('theme');
+      var escuro = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      if (t ? t === 'dark' : escuro) document.documentElement.classList.add('dark');
+    } catch (e) {}
   })();
 </script>
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
-<script src="https://cdn.tailwindcss.com"></script>
-<script>
-  tailwind.config = { darkMode: 'class', theme: { extend: { colors: {
-    ink: { DEFAULT:'#0D1512',50:'#F4F6F4',100:'#E1E7E3',200:'#B9C6BE',300:'#8CA095',400:'#5B6F62',500:'#3A4A3F',600:'#25322A',700:'#182019',800:'#111713',900:'#0D1512',950:'#080C0A' },
-    paper: { DEFAULT:'#F2EEE4', soft:'#EAE4D6', card:'#FBF9F3' },
-    copper: { DEFAULT:'#B8703E', light:'#D08F5D', dark:'#8E5530' },
-    teal: { DEFAULT:'#3B7A4E', light:'#5CA173', dark:'#28583A' },
-  } } } };
-</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/style.css">
 </head>
-<body class="bg-surface text-ink-dynamic">
-
+<body>
 <div id="navbar-mount"></div>
 
 <main>
-  <article class="section-pad">
-    <div class="container-shell max-w-3xl">
-      <a href="blog.html" class="inline-flex items-center gap-1.5 font-body text-sm text-muted-dynamic hover:text-accent-dynamic">
-        ← Voltar ao blog
-      </a>
+  <article class="sec" style="border-top:0">
+    <div class="wrap" style="max-width:46rem">
+      <a class="link" href="blog.html">Voltar ao blog</a>
+      <header id="post-header" style="margin-top:1.5rem"><div class="skeleton" style="height:2.5rem;width:80%"></div></header>
+      <div class="prose" id="post-content" style="margin-top:2rem"></div>
+      <ul class="tags" id="post-tags" style="margin-top:2rem"></ul>
 
-      <div id="post-header" class="mt-6">
-        <div class="skeleton h-4 w-24 rounded"></div>
-        <div class="skeleton mt-3 h-10 w-3/4 rounded"></div>
-        <div class="skeleton mt-4 h-4 w-48 rounded"></div>
-      </div>
-
-      <div id="post-content" class="prose-portfolio mt-10"></div>
-      <div id="post-tags" class="mt-10 flex flex-wrap gap-2 border-t border-dynamic pt-6"></div>
-
-      <section class="mt-14 border-t border-dynamic pt-10">
-        <h2 class="flex items-center gap-2 font-display text-xl font-semibold text-ink-dynamic">
-          <span data-icon="message" class="inline-block h-5 w-5 text-accent-dynamic"></span>
-          <span id="comments-heading">Comentários</span>
-        </h2>
-
-        <form id="comment-form" novalidate class="mt-6 space-y-4 rounded-2xl border border-dynamic bg-surface-card p-6">
-          <div class="grid gap-4 sm:grid-cols-2">
-            <input name="name" type="text" required minlength="2" maxlength="100" placeholder="O seu nome" class="input-base">
-            <input name="email" type="email" required maxlength="254" placeholder="O seu e-mail (nunca é publicado)" class="input-base">
+      <section id="comentarios" class="hidden" style="margin-top:3.5rem;padding-top:2rem;border-top:1px solid var(--line)">
+        <h2 id="comments-heading" style="font-size:1.35rem">Comentários</h2>
+        <form class="form" id="comment-form" novalidate style="margin-top:1.25rem">
+          <div class="form-row">
+            <div><label for="c-name">Nome</label><input class="input" id="c-name" name="name" required minlength="2" maxlength="100"></div>
+            <div><label for="c-email">Email (não é publicado)</label><input class="input" id="c-email" name="email" type="email" required maxlength="254"></div>
           </div>
-          <textarea name="content" required minlength="3" maxlength="1000" rows="3" placeholder="Escreva o seu comentário..." class="input-base resize-none"></textarea>
-          <button type="submit" id="comment-submit"
-                  class="inline-flex items-center gap-2 rounded-full bg-accent-dynamic px-5 py-2.5 font-body text-sm font-medium text-[rgb(251_249_243)] transition-transform hover:scale-[1.02] active:scale-[0.98] disabled:opacity-60">
-            Publicar comentário
-          </button>
-          <p id="comment-feedback" class="font-body text-sm"></p>
-          <p class="font-body text-xs text-muted-dynamic">O seu e-mail é usado apenas para validação e nunca é exibido publicamente.</p>
+          <div><label for="c-content">Comentário</label><textarea class="input" id="c-content" name="content" required minlength="3" maxlength="1000" rows="3"></textarea></div>
+          <div><button class="btn" type="submit" id="comment-submit">Publicar comentário</button></div>
+          <p class="feedback" id="comment-feedback" role="status"></p>
         </form>
-
-        <div id="comments-list" class="mt-8 space-y-6">
-          <p class="font-body text-sm text-muted-dynamic">A carregar comentários...</p>
-        </div>
+        <div id="comments-list" style="margin-top:2rem;display:grid;gap:1.5rem"></div>
       </section>
     </div>
   </article>
 </main>
 
 <div id="footer-mount"></div>
-<div id="whatsapp-float-mount"></div>
 <div id="back-to-top-mount"></div>
+<div id="whatsapp-float-mount"></div>
 
+<script src="assets/js/shared/config.js"></script>
+<script src="assets/js/shared/util.js"></script>
 <script src="assets/js/shared/icons.js"></script>
 <script src="assets/js/shared/theme.js"></script>
 <script src="assets/js/shared/api.js"></script>

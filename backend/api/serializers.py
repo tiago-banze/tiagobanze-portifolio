@@ -149,7 +149,7 @@ class ContactMessageSerializer(serializers.ModelSerializer):
 class CommentSerializer(serializers.ModelSerializer):
     """
     O campo 'email' é write_only: é aceite na criação (POST) para validação,
-    mas NUNCA é incluído na resposta da API — nem em listagens, nem no próprio
+    mas NUNCA é incluído na resposta da API, nem em listagens, nem no próprio
     objeto recém-criado. Isto garante que o e-mail do leitor nunca fica público.
     """
     class Meta:

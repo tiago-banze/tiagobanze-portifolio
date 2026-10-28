@@ -4,4 +4,4 @@ from django.apps import AppConfig
 class ApiConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
     name = 'api'
-    verbose_name = 'Portfólio & Blog'
+    verbose_name = 'Portefólio e blog'

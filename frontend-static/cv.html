@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-MZ">
+<html lang="pt-PT">
 <head>
 <!-- Google Analytics (GA4) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-CKKE9C1RHK"></script>
@@ -10,74 +10,64 @@
   gtag('config', 'G-CKKE9C1RHK');
 </script>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Curriculum Vitae — Tiago Victor Banze</title>
-<meta name="description" content="Curriculum Vitae interativo de Tiago Victor Banze — formação académica, experiência profissional e competências técnicas.">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Currículo | Tiago Victor Banze</title>
+<meta name="description" content="Currículo de Tiago Victor Banze, gerado a partir do conteúdo do portefólio.">
 <link rel="canonical" href="https://tiagobanze-portifolio-qn47.vercel.app/cv.html">
+<meta property="og:title" content="Currículo | Tiago Victor Banze">
+<meta property="og:description" content="Currículo de Tiago Victor Banze, gerado a partir do conteúdo do portefólio.">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#f5f6f3">
 <script>
   (function () {
-    var stored = localStorage.getItem('theme');
-    var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    if (stored ? stored === 'dark' : prefersDark) document.documentElement.classList.add('dark');
+    try {
+      var t = localStorage.getItem('theme');
+      var escuro = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      if (t ? t === 'dark' : escuro) document.documentElement.classList.add('dark');
+    } catch (e) {}
   })();
 </script>
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
-<script src="https://cdn.tailwindcss.com"></script>
-<script>
-  tailwind.config = { darkMode: 'class', theme: { extend: { colors: {
-    ink: { DEFAULT:'#0D1512',50:'#F4F6F4',100:'#E1E7E3',200:'#B9C6BE',300:'#8CA095',400:'#5B6F62',500:'#3A4A3F',600:'#25322A',700:'#182019',800:'#111713',900:'#0D1512',950:'#080C0A' },
-    paper: { DEFAULT:'#F2EEE4', soft:'#EAE4D6', card:'#FBF9F3' },
-    copper: { DEFAULT:'#B8703E', light:'#D08F5D', dark:'#8E5530' },
-    teal: { DEFAULT:'#3B7A4E', light:'#5CA173', dark:'#28583A' },
-  } } } };
-</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/style.css">
 </head>
-<body class="bg-surface text-ink-dynamic">
-
+<body>
 <div id="navbar-mount"></div>
 
 <main>
-  <section class="section-pad">
-    <div class="container-shell">
-      <div class="flex flex-wrap items-end justify-between gap-4">
+  <section class="sec" style="border-top:0">
+    <div class="wrap">
+      <div class="cv-top">
         <div>
-          <p class="font-mono text-xs uppercase tracking-widest text-accent-dynamic">Curriculum</p>
-          <h1 id="cv-name" class="mt-3 font-display text-4xl font-semibold text-ink-dynamic skeleton h-10 w-64"></h1>
-          <p id="cv-headline" class="mt-2 font-body text-base text-muted-dynamic"></p>
+          <h1 style="font-size:clamp(2rem,4vw,2.6rem)">Currículo</h1>
+          <p>Este currículo é montado a partir do conteúdo do site e tem no máximo duas páginas. Quando o conteúdo muda, o PDF muda também.</p>
         </div>
-        <a id="cv-download" href="#" class="hidden inline-flex items-center gap-2 rounded-full bg-accent-dynamic px-5 py-2.5 font-body text-sm font-medium text-[rgb(251_249_243)]">
-          <span data-icon="download" class="inline-block h-4 w-4"></span> Baixar PDF
-        </a>
-      </div>
-
-      <div id="cv-timeline-wrap" class="mt-14 grid gap-14 lg:grid-cols-[1.3fr_1fr]">
-        <div>
-          <h3 class="font-display text-xl font-semibold text-ink-dynamic">Linha do tempo</h3>
-          <ol id="cv-timeline" class="mt-6 space-y-8 border-l border-dynamic pl-6">
-            <li class="skeleton h-20 rounded"></li>
-            <li class="skeleton h-20 rounded"></li>
-          </ol>
-        </div>
-        <div>
-          <h3 class="font-display text-xl font-semibold text-ink-dynamic">Competências</h3>
-          <div id="cv-skills" class="mt-6 space-y-7">
-            <div class="skeleton h-32 rounded"></div>
-          </div>
+        <div class="actions" style="margin:0">
+          <button class="btn" type="button" id="cv-download" disabled>Descarregar PDF</button>
         </div>
       </div>
+      <p class="feedback erro" id="cv-erro" role="alert"></p>
+      <div class="cv-sheet" id="cv-sheet"><div class="skeleton" style="height:20rem"></div></div>
+      <p class="cv-note">A pré-visualização é uma versão para ler no ecrã. O PDF tem a mesma informação, em formato A4.</p>
     </div>
   </section>
 </main>
 
 <div id="footer-mount"></div>
-<div id="whatsapp-float-mount"></div>
 <div id="back-to-top-mount"></div>
+<div id="whatsapp-float-mount"></div>
 
+<script src="assets/js/shared/config.js"></script>
+<script src="assets/js/shared/util.js"></script>
 <script src="assets/js/shared/icons.js"></script>
 <script src="assets/js/shared/theme.js"></script>
 <script src="assets/js/shared/api.js"></script>
 <script src="assets/js/shared/partials.js"></script>
+<script src="assets/js/shared/cv-data.js"></script>
+<script src="assets/js/shared/cv-pdf.js"></script>
 <script src="assets/js/pages/cv.js"></script>
 </body>
 </html>

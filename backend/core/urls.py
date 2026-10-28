@@ -20,6 +20,6 @@ urlpatterns = [
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
-admin.site.site_header = "Tiago Victor Banze — Administração do Portfólio"
+admin.site.site_header = "Tiago Victor Banze: administração do portefólio"
 admin.site.site_title = "Painel Tiago Banze"
 admin.site.index_title = "Gestão de Conteúdo"

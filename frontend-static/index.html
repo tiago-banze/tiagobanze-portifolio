@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-MZ">
+<html lang="pt-PT">
 <head>
 <!-- Google Analytics (GA4) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-CKKE9C1RHK"></script>
@@ -10,231 +10,134 @@
   gtag('config', 'G-CKKE9C1RHK');
 </script>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tiago Victor Banze — Engenheiro Informático &amp; Desenvolvedor Full-Stack</title>
-<meta name="description" content="Portfólio de Tiago Victor Banze, Engenheiro Informático, Desenvolvedor Full-Stack, Técnico de Redes e Telecomunicações e Técnico Eletricista Residencial em Maxixe, Inhambane, Moçambique.">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tiago Victor Banze, engenheiro informático na Maxixe</title>
+<meta name="description" content="Portefólio de Tiago Victor Banze: sistemas web, redes, instalações elétricas e formação em software, na Maxixe, Inhambane.">
 <link rel="canonical" href="https://tiagobanze-portifolio-qn47.vercel.app/">
-<meta property="og:title" content="Tiago Victor Banze — Portfólio">
-<meta property="og:description" content="Engenheiro Informático &amp; Desenvolvedor Full-Stack em Maxixe, Inhambane, Moçambique.">
+<meta property="og:title" content="Tiago Victor Banze, engenheiro informático na Maxixe">
+<meta property="og:description" content="Portefólio de Tiago Victor Banze: sistemas web, redes, instalações elétricas e formação em software, na Maxixe, Inhambane.">
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
-<!-- Evita flash de tema errado: aplica dark/light antes da primeira pintura -->
+<meta name="theme-color" content="#f5f6f3">
 <script>
   (function () {
-    var stored = localStorage.getItem('theme');
-    var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    if (stored ? stored === 'dark' : prefersDark) document.documentElement.classList.add('dark');
+    try {
+      var t = localStorage.getItem('theme');
+      var escuro = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      if (t ? t === 'dark' : escuro) document.documentElement.classList.add('dark');
+    } catch (e) {}
   })();
 </script>
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
-<script src="https://cdn.tailwindcss.com"></script>
-<script>
-  tailwind.config = {
-    darkMode: 'class',
-    theme: {
-      extend: {
-        colors: {
-          ink: { DEFAULT: '#0D1512', 50:'#F4F6F4',100:'#E1E7E3',200:'#B9C6BE',300:'#8CA095',400:'#5B6F62',500:'#3A4A3F',600:'#25322A',700:'#182019',800:'#111713',900:'#0D1512',950:'#080C0A' },
-          paper: { DEFAULT: '#F2EEE4', soft: '#EAE4D6', card: '#FBF9F3' },
-          copper: { DEFAULT: '#B8703E', light: '#D08F5D', dark: '#8E5530' },
-          teal: { DEFAULT: '#3B7A4E', light: '#5CA173', dark: '#28583A' },
-        },
-      },
-    },
-  };
-</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/style.css">
 </head>
-<body class="bg-surface text-ink-dynamic">
-
+<body>
 <div id="navbar-mount"></div>
 
 <main>
-  <!-- HERO -->
-  <section class="relative overflow-hidden border-b border-dynamic bg-surface">
-    <div aria-hidden class="absolute inset-0 bg-circuit-grid" style="mask-image: radial-gradient(ellipse at top right, black, transparent 70%);"></div>
-    <div class="container-shell relative grid gap-14 py-20 sm:py-28 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
+  <section class="hero">
+    <div class="wrap hero-grid">
       <div>
-        <p class="font-mono text-xs uppercase tracking-widest text-accent-dynamic">Maxixe, Inhambane — Moçambique</p>
-        <h1 id="hero-name" class="mt-5 font-display text-4xl font-semibold leading-[1.08] tracking-tight text-ink-dynamic sm:text-5xl lg:text-6xl skeleton h-14 w-3/4"></h1>
-        <div id="hero-titles" class="mt-4 flex flex-wrap gap-2"></div>
-        <p id="hero-bio" class="mt-6 max-w-xl font-body text-base leading-relaxed text-muted-dynamic sm:text-lg skeleton h-16 w-full"></p>
-        <div class="mt-9 flex flex-wrap items-center gap-4">
-          <a id="hero-whatsapp" href="#" target="_blank" rel="noopener noreferrer"
-             class="inline-flex items-center gap-2 rounded-full bg-accent-dynamic px-6 py-3 font-body text-sm font-medium text-[rgb(251_249_243)] transition-transform hover:scale-[1.02] active:scale-[0.98]">
-            Falar no WhatsApp 
-          </a>
-          <a id="hero-cv" href="cv.html"
-             class="inline-flex items-center gap-2 rounded-full border border-dynamic px-6 py-3 font-body text-sm font-medium text-ink-dynamic hover:bg-copper/10">
-            Ver Curriculum Vitae
-          </a>
+        <p class="hero-local" id="hero-local"></p>
+        <h1 id="hero-nome"><span class="skeleton" style="display:block;height:3.4rem;width:70%"></span></h1>
+        <p class="hero-roles" id="hero-cargos"></p>
+        <p class="lead" id="hero-bio"></p>
+        <div class="actions">
+          <a class="btn" id="hero-whatsapp" href="#" target="_blank" rel="noopener noreferrer">Falar no WhatsApp</a>
+          <a class="btn btn-line" href="cv.html">Ver currículo</a>
         </div>
-        <div class="mt-8 flex items-center gap-4">
-          <a id="hero-github" href="#" target="_blank" rel="noopener noreferrer" aria-label="GitHub"
-             class="inline-flex h-10 w-10 items-center justify-center rounded-full border border-dynamic text-ink-dynamic hover:bg-copper/10"></a>
-          <a id="hero-facebook" href="#" target="_blank" rel="noopener noreferrer" aria-label="Facebook"
-             class="inline-flex h-10 w-10 items-center justify-center rounded-full border border-dynamic text-ink-dynamic hover:bg-copper/10"></a>
-        </div>
+        <p class="hero-contact" id="hero-contacto"></p>
       </div>
-      <div class="relative mx-auto aspect-square w-full max-w-md">
-        <div id="hero-portrait" class="relative flex h-full w-full items-center justify-center"></div>
-      </div>
+      <figure class="portrait" id="hero-retrato"></figure>
     </div>
   </section>
 
-  <!-- SOBRE -->
-  <section id="sobre" class="section-pad bg-surface-soft">
-    <div class="container-shell grid gap-12 lg:grid-cols-[0.8fr_1.2fr]">
+  <section class="sec" id="sobre">
+    <div class="wrap two-col">
+      <h2>Sobre mim</h2>
       <div>
-        <p class="font-mono text-xs uppercase tracking-widest text-accent-dynamic">01 — Trajetória</p>
-        <h2 class="mt-3 font-display text-3xl font-semibold text-ink-dynamic sm:text-4xl">Sobre mim</h2>
-      </div>
-      <div class="space-y-8">
-        <p id="about-bio" class="max-w-2xl font-body text-base leading-relaxed text-ink-dynamic sm:text-lg skeleton h-24 w-full"></p>
-        <div class="grid gap-6 sm:grid-cols-3">
-          <div class="rounded-2xl border border-dynamic bg-surface-card p-6">
-            <div class="text-accent-dynamic"><span data-icon="graduation-cap" class="inline-block h-5 w-5"></span></div>
-            <p class="mt-4 font-display text-base font-semibold text-ink-dynamic">Formação</p>
-            <p class="mt-2 font-body text-sm leading-relaxed text-muted-dynamic">Licenciatura em Engenharia Informática e Tecnologias pela Universidade Metodista Unida de Moçambique.</p>
-          </div>
-          <div class="rounded-2xl border border-dynamic bg-surface-card p-6">
-            <div class="text-accent-dynamic"><span data-icon="map-pin" class="inline-block h-5 w-5"></span></div>
-            <p class="mt-4 font-display text-base font-semibold text-ink-dynamic">Percurso</p>
-            <p class="mt-2 font-body text-sm leading-relaxed text-muted-dynamic">Nascido em Maputo; radicado desde 2022 na cidade da Maxixe, província de Inhambane.</p>
-          </div>
-          <div class="rounded-2xl border border-dynamic bg-surface-card p-6">
-            <div class="text-accent-dynamic"><span data-icon="cpu" class="inline-block h-5 w-5"></span></div>
-            <p class="mt-4 font-display text-base font-semibold text-ink-dynamic">Paixões técnicas</p>
-            <p class="mt-2 font-body text-sm leading-relaxed text-muted-dynamic">Eletrónica, eletricidade, programação embarcada (IoT), redes de computadores e desenvolvimento web/mobile.</p>
-          </div>
-        </div>
-        <div id="about-image-wrap"></div>
+        <div class="prose-text" id="sobre-texto"><div class="skeleton" style="height:7rem"></div></div>
+        <dl class="facts" id="sobre-factos"></dl>
+        <div id="sobre-imagem"></div>
       </div>
     </div>
   </section>
 
-  <!-- CERTIFICAÇÕES -->
-  <section id="certificacoes" class="section-pad bg-surface">
-    <div class="container-shell">
-      <p class="font-mono text-xs uppercase tracking-widest text-accent-dynamic">Formação Contínua</p>
-      <h2 class="mt-3 font-display text-3xl font-semibold text-ink-dynamic sm:text-4xl">Certificações &amp; Cursos</h2>
-      <div id="certifications-slider-wrap" class="mt-10 hidden">
-        <div class="relative overflow-hidden rounded-2xl border border-dynamic bg-surface-card">
-          <div id="certifications-track" class="flex transition-transform duration-500 ease-out"></div>
-        </div>
-        <div class="mt-5 flex items-center justify-center gap-4">
-          <button type="button" id="cert-prev" aria-label="Certificado anterior"
-                  class="inline-flex h-9 w-9 items-center justify-center rounded-full border border-dynamic text-ink-dynamic hover:bg-copper/10">←</button>
-          <div id="cert-dots" class="flex items-center gap-2"></div>
-          <button type="button" id="cert-next" aria-label="Próximo certificado"
-                  class="inline-flex h-9 w-9 items-center justify-center rounded-full border border-dynamic text-ink-dynamic hover:bg-copper/10">→</button>
-        </div>
+  <section class="sec" id="servicos">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Serviços</h2>
+        <p>Trabalho para particulares, estudantes e pequenas empresas na região de Inhambane.</p>
       </div>
-      <p id="certifications-empty" class="mt-6 font-body text-sm text-muted-dynamic">A carregar certificações...</p>
+      <ul class="services" id="servicos-lista"><li class="skeleton" style="height:5rem"></li></ul>
     </div>
   </section>
 
-  <!-- SERVIÇOS -->
-  <section id="servicos" class="section-pad bg-surface">
-    <div class="container-shell">
-      <p class="font-mono text-xs uppercase tracking-widest text-accent-dynamic">02 — Catálogo</p>
-      <h2 class="mt-3 max-w-2xl font-display text-3xl font-semibold text-ink-dynamic sm:text-4xl">Serviços que presto</h2>
-      <p class="mt-4 max-w-2xl font-body text-base text-muted-dynamic">
-        Do código à instalação elétrica — soluções técnicas completas para pessoas, estudantes e pequenos negócios na região de Inhambane e além.
-      </p>
-      <div id="services-grid" class="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-        <div class="skeleton h-48 rounded-2xl"></div>
-        <div class="skeleton h-48 rounded-2xl"></div>
-        <div class="skeleton h-48 rounded-2xl"></div>
+  <section class="sec" id="projetos">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Projetos</h2>
+        <p>Sistemas que desenhei e construí. Em cada um podes abrir os detalhes do problema e da solução.</p>
       </div>
+      <div class="cards" id="projects-grid"><div class="skeleton" style="height:14rem"></div><div class="skeleton" style="height:14rem"></div></div>
+      <div class="more hidden" id="projects-more"></div>
     </div>
   </section>
 
-  <!-- PROJETOS (prévia) -->
-  <section id="projetos" class="section-pad bg-surface-soft">
-    <div class="container-shell">
-      <div class="flex flex-wrap items-end justify-between gap-4">
-        <div>
-          <p class="font-mono text-xs uppercase tracking-widest text-accent-dynamic">03 — Portfólio</p>
-          <h2 class="mt-3 font-display text-3xl font-semibold text-ink-dynamic sm:text-4xl">Sistemas &amp; Projetos</h2>
-        </div>
-        <a href="projetos.html" class="link-underline pb-1 font-body text-sm font-medium text-accent-dynamic">Ver todos os projetos →</a>
-      </div>
-      <div id="projects-grid" class="mt-12 grid gap-6 md:grid-cols-2">
-        <div class="skeleton h-56 rounded-2xl"></div>
-        <div class="skeleton h-56 rounded-2xl"></div>
-      </div>
+  <section class="sec" id="certificados">
+    <div class="wrap">
+      <div class="sec-head"><h2>Certificados e cursos</h2></div>
+      <ul class="certs" id="certificados-lista"></ul>
     </div>
   </section>
 
-  <!-- BLOG (prévia) -->
-  <section id="blog" class="section-pad bg-surface">
-    <div class="container-shell">
-      <div class="flex flex-wrap items-end justify-between gap-4">
-        <div>
-          <p class="font-mono text-xs uppercase tracking-widest text-accent-dynamic">04 — Blog Técnico</p>
-          <h2 class="mt-3 font-display text-3xl font-semibold text-ink-dynamic sm:text-4xl">Últimos artigos</h2>
-        </div>
-        <a href="blog.html" class="link-underline pb-1 font-body text-sm font-medium text-accent-dynamic">Ver todos os artigos →</a>
+  <section class="sec" id="blog">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Blog</h2>
+        <a class="link" href="blog.html">Ver todos os artigos</a>
       </div>
-      <div id="blog-grid" class="mt-12 grid gap-6 lg:grid-cols-3">
-        <div class="skeleton h-48 rounded-2xl"></div>
-        <div class="skeleton h-48 rounded-2xl"></div>
-        <div class="skeleton h-48 rounded-2xl"></div>
-      </div>
+      <ul class="post-list" id="blog-lista"><li class="skeleton" style="height:5rem"></li></ul>
     </div>
   </section>
 
-  <!-- CONTACTO -->
-  <section id="contacto" class="section-pad bg-surface">
-    <div class="container-shell grid gap-14 lg:grid-cols-[0.9fr_1.1fr]">
+  <section class="sec" id="contacto">
+    <div class="wrap contact-grid">
       <div>
-        <p class="font-mono text-xs uppercase tracking-widest text-accent-dynamic">06 — Contacto</p>
-        <h2 class="mt-3 font-display text-3xl font-semibold text-ink-dynamic sm:text-4xl">Vamos conversar</h2>
-        <p class="mt-4 max-w-md font-body text-base leading-relaxed text-muted-dynamic">
-          Tem um projeto, uma dúvida técnica ou precisa de assistência? Escreva-me diretamente ou use o formulário ao lado.
-        </p>
-        <ul id="contact-info" class="mt-8 space-y-4 font-body text-sm text-ink-dynamic"></ul>
+        <h2>Contacto</h2>
+        <p class="muted" style="margin-top:.8rem;max-width:26rem">Tens um projeto, uma avaria ou uma dúvida? Escreve-me ou liga. Respondo assim que puder.</p>
+        <ul class="contact-list" id="contacto-lista"></ul>
+        <p class="hint" id="contacto-dica" style="margin-top:1rem"></p>
       </div>
-      <div class="rounded-2xl border border-dynamic bg-surface-card p-7 sm:p-9">
-        <form id="contact-form" novalidate class="space-y-5">
-          <div class="grid gap-5 sm:grid-cols-2">
-            <div>
-              <label for="name" class="mb-1.5 block font-body text-sm font-medium text-ink-dynamic">Nome</label>
-              <input id="name" name="name" type="text" required minlength="2" maxlength="120" class="input-base" placeholder="O seu nome completo">
-            </div>
-            <div>
-              <label for="email" class="mb-1.5 block font-body text-sm font-medium text-ink-dynamic">Email</label>
-              <input id="email" name="email" type="email" required maxlength="254" class="input-base" placeholder="voce@email.com">
-            </div>
-          </div>
-          <div>
-            <label for="subject" class="mb-1.5 block font-body text-sm font-medium text-ink-dynamic">Assunto</label>
-            <input id="subject" name="subject" type="text" maxlength="200" class="input-base" placeholder="Sobre o que gostaria de falar?">
-          </div>
-          <div>
-            <label for="message" class="mb-1.5 block font-body text-sm font-medium text-ink-dynamic">Mensagem</label>
-            <textarea id="message" name="message" required minlength="10" maxlength="3000" rows="5" class="input-base resize-none" placeholder="Escreva aqui a sua mensagem..."></textarea>
-          </div>
-          <button type="submit" id="contact-submit"
-                  class="inline-flex w-full items-center justify-center gap-2 rounded-full bg-accent-dynamic px-6 py-3.5 font-body text-sm font-medium text-[rgb(251_249_243)] transition-transform hover:scale-[1.01] active:scale-[0.99] disabled:opacity-60 sm:w-auto">
-            Enviar mensagem
-          </button>
-          <p id="contact-feedback" class="font-body text-sm"></p>
-        </form>
-      </div>
+      <form class="form" id="contact-form" novalidate>
+        <div class="form-row">
+          <div><label for="name">Nome</label><input class="input" id="name" name="name" type="text" required minlength="2" maxlength="120" autocomplete="name"></div>
+          <div><label for="email">Email</label><input class="input" id="email" name="email" type="email" maxlength="254" autocomplete="email"></div>
+        </div>
+        <div><label for="subject">Assunto</label><input class="input" id="subject" name="subject" type="text" maxlength="200"></div>
+        <div><label for="message">Mensagem</label><textarea class="input" id="message" name="message" required minlength="10" maxlength="3000" rows="5"></textarea></div>
+        <div><button class="btn" type="submit" id="contact-submit">Enviar mensagem</button></div>
+        <p class="hint" id="form-nota"></p>
+        <p class="feedback" id="contact-feedback" role="status"></p>
+      </form>
     </div>
   </section>
 </main>
 
 <div id="footer-mount"></div>
-<div id="whatsapp-float-mount"></div>
 <div id="back-to-top-mount"></div>
+<div id="whatsapp-float-mount"></div>
 
+<script src="assets/js/shared/config.js"></script>
+<script src="assets/js/shared/util.js"></script>
 <script src="assets/js/shared/icons.js"></script>
 <script src="assets/js/shared/theme.js"></script>
 <script src="assets/js/shared/api.js"></script>
 <script src="assets/js/shared/partials.js"></script>
+<script src="assets/js/shared/projects-ui.js"></script>
 <script src="assets/js/pages/home.js"></script>
 </body>
 </html>
