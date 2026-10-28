@@ -98,13 +98,11 @@ function prepararFormulario(perfil) {
     const mensagem = String(d.get('message') || '').trim();
     aviso.className = 'feedback';
     if (nome.length < 2 || mensagem.length < 10) {
-      aviso.className = 'feedback erro';
-      aviso.textContent = 'Preenche o nome e escreve uma mensagem com pelo menos 10 caracteres.';
+      mostrarResultado(aviso, form, false, 'Preenche o nome e escreve uma mensagem com pelo menos 10 caracteres.');
       return;
     }
     if (comServidor && !email) {
-      aviso.className = 'feedback erro';
-      aviso.textContent = 'Indica o teu email para eu poder responder.';
+      mostrarResultado(aviso, form, false, 'Indica o teu email para eu poder responder.');
       return;
     }
     if (!comServidor) {
@@ -113,13 +111,14 @@ function prepararFormulario(perfil) {
       return;
     }
     botao.disabled = true;
-    botao.textContent = 'A enviar...';
+    botao.classList.add('carregando');
+    botao.textContent = 'A enviar';
     const r = await api.sendContactMessage({ name: nome, email, subject: assunto, message: mensagem })
       .catch(() => ({ ok: false, detail: 'Sem ligação ao servidor. Tenta outra vez ou fala comigo pelo WhatsApp.' }));
-    aviso.className = `feedback ${r.ok ? 'ok' : 'erro'}`;
-    aviso.textContent = r.ok ? 'Mensagem enviada. Obrigado pelo contacto.' : r.detail;
+    mostrarResultado(aviso, form, r.ok, r.ok ? 'Mensagem enviada. Obrigado pelo contacto.' : r.detail);
     if (r.ok) form.reset();
     botao.disabled = false;
+    botao.classList.remove('carregando');
     botao.textContent = 'Enviar mensagem';
   });
 }

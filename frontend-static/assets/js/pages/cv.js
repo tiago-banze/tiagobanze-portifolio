@@ -50,7 +50,8 @@ document.addEventListener('DOMContentLoaded', async () => {
   botao.addEventListener('click', async () => {
     erro.textContent = '';
     botao.disabled = true;
-    botao.textContent = 'A gerar o PDF...';
+    botao.classList.add('carregando');
+    botao.textContent = 'A gerar o PDF';
     try {
       if (!window.jspdf) await carregarScript('assets/vendor/jspdf.umd.min.js');
       const doc = construirCvPdf(window.jspdf.jsPDF, cv);
@@ -60,6 +61,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       erro.textContent = 'Não foi possível gerar o PDF. Tenta outra vez.';
     } finally {
       botao.disabled = false;
+      botao.classList.remove('carregando');
       botao.textContent = 'Descarregar PDF';
     }
   });

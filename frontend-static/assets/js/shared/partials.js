@@ -36,18 +36,18 @@ function renderNavbar() {
           <button type="button" class="icon-btn menu-btn" id="menu-btn" aria-label="Abrir menu" aria-expanded="false">${icon('menu')}</button>
         </div>
       </div>
-      <div class="mobile-menu hidden" id="mobile-menu"><div class="wrap"><ul>${movel}</ul></div></div>
+      <div class="mobile-menu" id="mobile-menu"><div class="wrap"><ul>${movel}</ul></div></div>
     </header>`;
 
   const btn = document.getElementById('menu-btn');
   const menu = document.getElementById('mobile-menu');
   btn.addEventListener('click', () => {
-    const aberto = menu.classList.toggle('hidden') === false;
+    const aberto = menu.classList.toggle('aberto');
     btn.setAttribute('aria-expanded', String(aberto));
     btn.setAttribute('aria-label', aberto ? 'Fechar menu' : 'Abrir menu');
     btn.innerHTML = icon(aberto ? 'x' : 'menu');
   });
-  menu.addEventListener('click', (e) => { if (e.target.closest('a')) menu.classList.add('hidden'); });
+  menu.addEventListener('click', (e) => { if (e.target.closest('a')) menu.classList.remove('aberto'); });
   atualizarIconesDoTema();
 }
 

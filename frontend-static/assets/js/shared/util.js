@@ -55,3 +55,18 @@ function linkWhatsApp(numero, texto) {
   const base = `https://wa.me/${soDigitos(numero || window.PORTFOLIO_CONFIG.telefone)}`;
   return texto ? `${base}?text=${encodeURIComponent(texto)}` : base;
 }
+
+const HTML_VISTO = '<svg class="visto" viewBox="0 0 52 52" aria-hidden="true"><circle class="visto__circ" cx="26" cy="26" r="24"/><path class="visto__tique" d="M15 27l8 8 15-16"/></svg>';
+
+/** Mostra o resultado de um envio: o visto desenha-se se correu bem; o formulário treme se falhou. */
+function mostrarResultado(aviso, formulario, correu, texto) {
+  aviso.className = `feedback ${correu ? 'ok' : 'erro'}`;
+  if (correu) {
+    aviso.innerHTML = `${HTML_VISTO}${esc(texto)}`;
+  } else {
+    aviso.textContent = texto;
+    formulario.classList.remove('tremor');
+    void formulario.offsetWidth;            // reinicia a animação
+    formulario.classList.add('tremor');
+  }
+}

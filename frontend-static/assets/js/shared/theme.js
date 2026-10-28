@@ -15,4 +15,5 @@ document.addEventListener('click', (e) => {
   const escuro = document.documentElement.classList.toggle('dark');
   try { localStorage.setItem('theme', escuro ? 'dark' : 'light'); } catch (_) { /* modo privado */ }
   atualizarIconesDoTema();
+  e.target.closest('[data-theme-toggle]').classList.add('trocou');
 });

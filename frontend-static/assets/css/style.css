@@ -5,6 +5,7 @@
 */
 
 :root {
+  --ease-out: cubic-bezier(0.22, 0.61, 0.36, 1);
   --font: 'IBM Plex Sans', 'Segoe UI', system-ui, -apple-system, Roboto, Helvetica, Arial, sans-serif;
   --mono: ui-monospace, 'Cascadia Mono', Consolas, 'Courier New', monospace;
 
@@ -55,7 +56,6 @@ button { font: inherit; color: inherit; cursor: pointer; }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  *, *::before, *::after { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
 }
 
 .wrap { width: 100%; max-width: var(--largura); margin-inline: auto; padding-inline: 1.25rem; }
@@ -103,7 +103,13 @@ h3 { font-size: 1.15rem; }
 .nav-right { display: flex; align-items: center; gap: 0.5rem; }
 .nav-wa { display: none; }
 .menu-btn { display: inline-flex; }
-.mobile-menu { border-top: 1px solid var(--line); background: var(--bg); }
+.mobile-menu {
+  display: grid; grid-template-rows: 0fr; visibility: hidden;
+  background: var(--bg); border-top: 1px solid transparent;
+  transition: grid-template-rows 0.28s var(--ease-out), visibility 0s linear 0.28s, border-color 0.28s;
+}
+.mobile-menu.aberto { grid-template-rows: 1fr; visibility: visible; border-top-color: var(--line); transition-delay: 0s; }
+.mobile-menu > .wrap { overflow: hidden; min-height: 0; }
 .mobile-menu ul { display: flex; flex-direction: column; padding-block: 0.75rem 1rem; }
 .mobile-menu a { display: block; padding: 0.7rem 0; text-decoration: none; border-bottom: 1px solid var(--line); }
 @media (min-width: 820px) {
@@ -263,7 +269,11 @@ textarea.input { resize: vertical; min-height: 7rem; }
 .to-top.visivel { opacity: 1; visibility: visible; }
 
 /* ---------- Estados ---------- */
-.skeleton { background: color-mix(in srgb, var(--line) 60%, transparent); border-radius: var(--radius); min-height: 1.2em; }
+.skeleton {
+  background: linear-gradient(90deg, var(--line) 25%, color-mix(in srgb, var(--line) 45%, var(--bg)) 50%, var(--line) 75%);
+  background-size: 200% 100%; animation: brilho-esqueleto 1.5s linear infinite;
+  border-radius: var(--radius); min-height: 1.2em;
+}
 .conn-error { border: 1px solid var(--erro); color: var(--erro); border-radius: var(--radius); padding: 0.9rem 1.1rem; font-size: 0.95rem; }
 .empty { color: var(--muted); }
 
@@ -290,3 +300,81 @@ textarea.input { resize: vertical; min-height: 7rem; }
 @media (min-width: 640px) { .cv-skill { grid-template-columns: 11.5rem 1fr; } }
 .cv-skill strong { font-weight: 600; }
 .cv-note { max-width: 52rem; margin: 1rem auto 0; font-size: 0.85rem; color: var(--muted); }
+
+/* ================= Movimento =================
+   Cada animação diz alguma coisa: de onde veio o conteúdo, que algo está a
+   carregar, que a ação foi aceite ou falhou. Com "reduzir movimento" ativo no
+   sistema, ficam só as que indicam estado (e mais lentas). */
+
+@view-transition { navigation: auto; }
+::view-transition-old(root), ::view-transition-new(root) { animation-duration: 0.2s; }
+
+/* Conteúdo que sobe ao aparecer (a classe é posta pelo animations.js) */
+.reveal { opacity: 0; transform: translateY(14px); transition: opacity 0.5s var(--ease-out), transform 0.5s var(--ease-out); transition-delay: var(--atraso, 0ms); }
+.reveal.in { opacity: 1; transform: none; }
+
+/* Botões, ligações e cartões */
+.btn, .icon-btn, .chip { transition: background-color 0.15s, border-color 0.15s, color 0.15s, filter 0.15s, transform 0.12s; }
+.btn:active, .icon-btn:active { transform: scale(0.97); }
+.nav-links a { background: linear-gradient(currentColor, currentColor) left bottom / 0 1px no-repeat; transition: background-size 0.25s var(--ease-out), color 0.15s; }
+.nav-links a:hover, .nav-links a[aria-current="page"] { background-size: 100% 1px; }
+.card, .cert { transition: transform 0.2s var(--ease-out), border-color 0.2s; }
+.card:hover, .cert:hover { transform: translateY(-2px); border-color: color-mix(in srgb, var(--accent) 45%, var(--line)); }
+.post-row h3 { transition: color 0.15s; }
+.service { transition: background-color 0.2s; }
+
+/* Brilho que percorre: só no botão principal da página inicial */
+.hero .btn:not(.btn-line) { position: relative; overflow: hidden; }
+.hero .btn:not(.btn-line)::after {
+  content: ''; position: absolute; inset: 0 auto 0 -60%; width: 40%;
+  background: linear-gradient(100deg, transparent, rgb(255 255 255 / 0.28), transparent);
+  transform: skewX(-18deg); animation: varrer 5.5s ease-in-out 1.5s infinite;
+}
+
+/* Abrir e fechar os detalhes dos projetos com a altura animada */
+.card details { interpolate-size: allow-keywords; }
+.card details::details-content { block-size: 0; overflow: clip; transition: block-size 0.3s var(--ease-out), content-visibility 0.3s allow-discrete; }
+.card details[open]::details-content { block-size: auto; }
+.card summary::after { transition: transform 0.25s var(--ease-out); }
+.card details[open] summary::after { transform: rotate(180deg); }
+
+/* Botão de tema: o ícone roda quando trocas */
+.trocou .icon { animation: rodar 0.4s var(--ease-out); }
+
+/* Botão do WhatsApp: três pulsos discretos e pára */
+.wa-float::before { content: ''; position: absolute; inset: 0; border-radius: 50%; border: 2px solid #1faa59; animation: anel 2.6s ease-out 2.5s 3; opacity: 0; }
+
+/* Estados de carregamento nos botões */
+.btn.carregando { pointer-events: none; }
+.btn.carregando::after {
+  content: ''; width: 0.95em; height: 0.95em; border: 2px solid currentColor; border-right-color: transparent;
+  border-radius: 50%; animation: giro 0.7s linear infinite;
+}
+
+/* Resultado de um formulário */
+.tremor { animation: tremor 0.4s ease; }
+.feedback.ok .visto { width: 1.2em; height: 1.2em; vertical-align: -0.2em; margin-right: 0.35rem; }
+.visto__circ, .visto__tique { fill: none; stroke: currentColor; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 160; stroke-dashoffset: 160; animation: desenhar 0.6s var(--ease-out) forwards; }
+.visto__tique { stroke-dasharray: 50; stroke-dashoffset: 50; animation-delay: 0.3s; animation-duration: 0.35s; }
+
+@keyframes brilho-esqueleto { from { background-position: 200% 0; } to { background-position: -200% 0; } }
+@keyframes varrer { 0%, 70% { left: -60%; } 100% { left: 130%; } }
+@keyframes giro { to { transform: rotate(360deg); } }
+@keyframes rodar { from { transform: rotate(-90deg) scale(0.6); opacity: 0; } to { transform: none; opacity: 1; } }
+@keyframes anel { from { transform: scale(1); opacity: 0.7; } to { transform: scale(1.7); opacity: 0; } }
+@keyframes tremor { 0%, 100% { transform: translateX(0); } 20% { transform: translateX(-6px); } 40% { transform: translateX(5px); } 60% { transform: translateX(-3px); } 80% { transform: translateX(2px); } }
+@keyframes desenhar { to { stroke-dashoffset: 0; } }
+
+@media (prefers-reduced-motion: reduce) {
+  /* Tira o que é decorativo */
+  .reveal { opacity: 1; transform: none; transition: none; }
+  .hero .btn:not(.btn-line)::after, .wa-float::before { display: none; }
+  .card:hover, .cert:hover, .btn:active, .icon-btn:active { transform: none; }
+  .trocou .icon, .tremor { animation: none; }
+  .card details::details-content { transition: none; }
+  ::view-transition-group(*), ::view-transition-old(*), ::view-transition-new(*) { animation: none !important; }
+  /* O que indica estado continua, mais devagar */
+  .skeleton { animation-duration: 3.5s; }
+  .btn.carregando::after { animation-duration: 1.6s; }
+  .visto__circ, .visto__tique { animation-duration: 0.01s; animation-delay: 0s; }
+}

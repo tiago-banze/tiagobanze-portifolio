@@ -27,6 +27,7 @@ function prepararFormularioComentario(postId) {
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
     botao.disabled = true;
+    botao.classList.add('carregando');
     const d = new FormData(form);
     const r = await api.postComment({ post: postId, name: d.get('name'), email: d.get('email'), content: d.get('content') })
       .catch(() => ({ ok: false, detail: 'Sem ligação ao servidor.' }));
@@ -35,13 +36,12 @@ function prepararFormularioComentario(postId) {
       if (lista.querySelector('.empty')) lista.innerHTML = '';
       lista.insertAdjacentHTML('afterbegin', htmlComentario(r.dados));
       form.reset();
-      aviso.className = 'feedback ok';
-      aviso.textContent = 'Comentário publicado.';
+      mostrarResultado(aviso, form, true, 'Comentário publicado.');
     } else {
-      aviso.className = 'feedback erro';
-      aviso.textContent = r.detail;
+      mostrarResultado(aviso, form, false, r.detail);
     }
     botao.disabled = false;
+    botao.classList.remove('carregando');
   });
 }
 
